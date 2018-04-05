@@ -1,6 +1,8 @@
 import React from 'react' // eslint-disable-line no-unused-vars
 
-function ShortenBox() {
+import RefsList from './RefsList'
+
+function RefsBox() {
   return <div id="container" className="clearfix">
     <div className="shorten-container">
       <h1 className="page-title">HARNESS EVERY CLICK, TAP AND SWIPE.</h1>
@@ -16,16 +18,9 @@ function ShortenBox() {
         </form>
         <div id="shorten_actions"></div>
       </div>
-      <div class="link-container mid-container">
-        <div id="shortened_info">
-          <ul id="most_recent_link" class="anon_history footroom"></ul>
-        </div>
-        <div>
-          <ul id="anon_history" class="anon_history"></ul>
-        </div>
-      </div>
+      <RefsList />
     </div>
   </div>
 }
 
-export default ShortenBox
+export default RefsBox

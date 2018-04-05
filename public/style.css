@@ -183,6 +183,12 @@ ul,ol{padding:0;list-style:none;margin-top:0;margin-bottom:8px;position:relative
   position:absolute
 }
 
+.list_item {
+  display: list-item;
+  opacity: 1;
+  overflow: hidden;
+}
+
 .button.secondary{color:#61b3de;box-shadow:0 0 0 1px #61b3de}
 
 .button.secondary:hover{color:#207dae;box-shadow:0 0 0 1px #207dae}

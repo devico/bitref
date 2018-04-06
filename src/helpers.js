@@ -1,13 +1,15 @@
-import * as R from 'ramda'
-import {solvedBoard} from './constants'
+import fetch from 'fetch'
 
-export const shuffleBoard = board => {
-  const arr = [...board]
-  for (let i = arr.length - 1; i > 0; i--) {
-    const index = Math.floor(Math.random() * (i + 1));
-    const x = arr[index];
-    arr[index] = arr[i];
-    arr[i] = x;
-  }
+export const getUrl = url => {
+  fetch(url)
+    .then(resp => resp.json())
+    .then(link => {
+    let quote = randomElement(quotes)
+    return textQuote.innerHTML = quote.quote + '<br />' + quote.author
+    })
+.catch((error) => {
+    alert('Не удалось загрузить цитату')
+  console.error(error)
+})
   return arr
 }

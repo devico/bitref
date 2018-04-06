@@ -1,22 +1,27 @@
 module.exports = {
-    entry: "./src/index.js",
+  entry: "./src/index.js",
 
-    output: {
-        filename: "bundle.js",
-        path: __dirname + "/public"
-    },
-    
-    resolve: {
-        extensions: [".js", ".jsx"]
-    },
+  output: {
+    filename: "bundle.js",
+    path: __dirname + "/public"
+  },
+  
+  resolve: {
+    extensions: [".js", ".jsx"]
+  },
 
-    module: {
-        loaders: [
-            {
-                test: /\.jsx?/,
-                exclude: /node_modules/,
-                loader: "babel-loader"
-            }
-        ]
-    }
+  node: {
+    dns: 'mock',
+    net: 'mock'
+  },
+
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      }
+    ]
+  }
 }

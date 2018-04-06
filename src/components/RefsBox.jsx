@@ -1,6 +1,7 @@
 import React from 'react' // eslint-disable-line no-unused-vars
 
 import RefsList from './RefsList' // eslint-disable-line no-unused-vars
+import {getUrl} from '../helpers'
 
 export default class RefsBox extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ export default class RefsBox extends React.Component {
   handleShorten(event) {
     event.preventDefault()
     const link = this.state.link
-    console.log(link)
+    getUrl(link)
   }
   handleChange(event) {
     const link = event.target.value

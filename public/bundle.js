@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -258,6 +258,21 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(16);
+} else {
+  module.exports = __webpack_require__(17);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 /**
@@ -294,21 +309,6 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(15);
-} else {
-  module.exports = __webpack_require__(16);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 3 */
@@ -506,7 +506,7 @@ module.exports = emptyObject;
 
 
 
-var emptyFunction = __webpack_require__(1);
+var emptyFunction = __webpack_require__(2);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -650,6 +650,41 @@ module.exports = ReactPropTypesSecret;
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(27)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(28)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
@@ -685,15 +720,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(17);
+  module.exports = __webpack_require__(18);
 } else {
-  module.exports = __webpack_require__(20);
+  module.exports = __webpack_require__(21);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -732,7 +767,7 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -774,7 +809,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -845,7 +880,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -860,7 +895,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(18);
+var isTextNode = __webpack_require__(19);
 
 /*eslint-disable no-bitwise */
 
@@ -888,21 +923,21 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(9);
+var _reactDom = __webpack_require__(10);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = __webpack_require__(25);
+var _App = __webpack_require__(26);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -914,7 +949,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root')); // eslint-disable-line no-undef
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -927,7 +962,7 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
  * LICENSE file in the root directory of this source tree.
  */
 
-var m=__webpack_require__(3),n=__webpack_require__(5),p=__webpack_require__(1),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.portal"):60106,u=q?Symbol["for"]("react.fragment"):60107,v=q?Symbol["for"]("react.strict_mode"):60108,w=q?Symbol["for"]("react.provider"):60109,x=q?Symbol["for"]("react.context"):60110,y=q?Symbol["for"]("react.async_mode"):60111,z=q?Symbol["for"]("react.forward_ref"):60112,A="function"===
+var m=__webpack_require__(3),n=__webpack_require__(5),p=__webpack_require__(2),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.portal"):60106,u=q?Symbol["for"]("react.fragment"):60107,v=q?Symbol["for"]("react.strict_mode"):60108,w=q?Symbol["for"]("react.provider"):60109,x=q?Symbol["for"]("react.context"):60110,y=q?Symbol["for"]("react.async_mode"):60111,z=q?Symbol["for"]("react.forward_ref"):60112,A="function"===
 typeof Symbol&&Symbol.iterator;function B(a){for(var b=arguments.length-1,e="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,c=0;c<b;c++)e+="\x26args[]\x3d"+encodeURIComponent(arguments[c+1]);b=Error(e+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var C={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function D(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||C}D.prototype.isReactComponent={};D.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?B("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};D.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};function E(){}
 E.prototype=D.prototype;function F(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||C}var G=F.prototype=new E;G.constructor=F;m(G,D.prototype);G.isPureReactComponent=!0;var H={current:null},I=Object.prototype.hasOwnProperty,J={key:!0,ref:!0,__self:!0,__source:!0};
@@ -943,7 +978,7 @@ module.exports=X["default"]?X["default"]:X;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -968,7 +1003,7 @@ var _assign = __webpack_require__(3);
 var emptyObject = __webpack_require__(5);
 var invariant = __webpack_require__(4);
 var warning = __webpack_require__(6);
-var emptyFunction = __webpack_require__(1);
+var emptyFunction = __webpack_require__(2);
 var checkPropTypes = __webpack_require__(7);
 
 // TODO: this is special because it gets imported during build.
@@ -2364,7 +2399,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2380,7 +2415,7 @@ module.exports = react;
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var ba=__webpack_require__(2),m=__webpack_require__(10),A=__webpack_require__(3),C=__webpack_require__(1),ea=__webpack_require__(11),fa=__webpack_require__(12),ha=__webpack_require__(13),ja=__webpack_require__(5);
+var ba=__webpack_require__(1),m=__webpack_require__(11),A=__webpack_require__(3),C=__webpack_require__(2),ea=__webpack_require__(12),fa=__webpack_require__(13),ha=__webpack_require__(14),ja=__webpack_require__(5);
 function D(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}ba?void 0:D("227");
 function ka(a,b,c,d,e,f,h,g,k){this._hasCaughtError=!1;this._caughtError=null;var v=Array.prototype.slice.call(arguments,3);try{b.apply(c,v)}catch(l){this._caughtError=l,this._hasCaughtError=!0}}
 var E={_caughtError:null,_hasCaughtError:!1,_rethrowError:null,_hasRethrowError:!1,invokeGuardedCallback:function(a,b,c,d,e,f,h,g,k){ka.apply(E,arguments)},invokeGuardedCallbackAndCatchFirstError:function(a,b,c,d,e,f,h,g,k){E.invokeGuardedCallback.apply(this,arguments);if(E.hasCaughtError()){var v=E.clearCaughtError();E._hasRethrowError||(E._hasRethrowError=!0,E._rethrowError=v)}},rethrowCaughtError:function(){return ma.apply(E,arguments)},hasCaughtError:function(){return E._hasCaughtError},clearCaughtError:function(){if(E._hasCaughtError){var a=
@@ -2616,7 +2651,7 @@ ReactDOMEventListener:Zd},unstable_createRoot:function(a,b){return new sg(a,!0,n
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2631,7 +2666,7 @@ ReactDOMEventListener:Zd},unstable_createRoot:function(a,b){return new sg(a,!0,n
  * @typechecks
  */
 
-var isNode = __webpack_require__(19);
+var isNode = __webpack_require__(20);
 
 /**
  * @param {*} object The object to check.
@@ -2644,7 +2679,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2672,7 +2707,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2693,19 +2728,19 @@ if (process.env.NODE_ENV !== "production") {
   (function() {
 'use strict';
 
-var React = __webpack_require__(2);
+var React = __webpack_require__(1);
 var invariant = __webpack_require__(4);
 var warning = __webpack_require__(6);
-var ExecutionEnvironment = __webpack_require__(10);
+var ExecutionEnvironment = __webpack_require__(11);
 var _assign = __webpack_require__(3);
-var emptyFunction = __webpack_require__(1);
+var emptyFunction = __webpack_require__(2);
 var checkPropTypes = __webpack_require__(7);
-var getActiveElement = __webpack_require__(11);
-var shallowEqual = __webpack_require__(12);
-var containsNode = __webpack_require__(13);
+var getActiveElement = __webpack_require__(12);
+var shallowEqual = __webpack_require__(13);
+var containsNode = __webpack_require__(14);
 var emptyObject = __webpack_require__(5);
-var hyphenateStyleName = __webpack_require__(21);
-var camelizeStyleName = __webpack_require__(23);
+var hyphenateStyleName = __webpack_require__(22);
+var camelizeStyleName = __webpack_require__(24);
 
 /**
  * WARNING: DO NOT manually require this module.
@@ -19200,7 +19235,7 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19215,7 +19250,7 @@ module.exports = reactDom;
 
 
 
-var hyphenate = __webpack_require__(22);
+var hyphenate = __webpack_require__(23);
 
 var msPattern = /^ms-/;
 
@@ -19242,7 +19277,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19278,7 +19313,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19293,7 +19328,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(24);
+var camelize = __webpack_require__(25);
 
 var msPattern = /^-ms-/;
 
@@ -19321,7 +19356,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19356,7 +19391,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19366,15 +19401,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(9);
+var _reactDom = __webpack_require__(10);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _propTypes = __webpack_require__(26);
+var _propTypes = __webpack_require__(9);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -19382,9 +19417,9 @@ var _Header = __webpack_require__(29);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _ShortenBox = __webpack_require__(30);
+var _RefsBox = __webpack_require__(30);
 
-var _ShortenBox2 = _interopRequireDefault(_ShortenBox);
+var _RefsBox2 = _interopRequireDefault(_RefsBox);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19398,46 +19433,11 @@ function App() {
     'div',
     { className: 'stage' },
     _react2.default.createElement(_Header2.default, null),
-    _react2.default.createElement(_ShortenBox2.default, null)
+    _react2.default.createElement(_RefsBox2.default, null)
   );
 } // eslint-disable-line no-unused-vars
 // eslint-disable-line no-unused-vars
 exports.default = App;
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
-
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(27)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(28)();
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 27 */
@@ -19453,7 +19453,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 
-var emptyFunction = __webpack_require__(1);
+var emptyFunction = __webpack_require__(2);
 var invariant = __webpack_require__(4);
 var warning = __webpack_require__(6);
 var assign = __webpack_require__(3);
@@ -20003,7 +20003,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 
-var emptyFunction = __webpack_require__(1);
+var emptyFunction = __webpack_require__(2);
 var invariant = __webpack_require__(4);
 var ReactPropTypesSecret = __webpack_require__(8);
 
@@ -20065,7 +20065,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -20175,7 +20175,257 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(2);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _RefsList = __webpack_require__(31);
+
+var _RefsList2 = _interopRequireDefault(_RefsList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // eslint-disable-line no-unused-vars
+
+// eslint-disable-line no-unused-vars
+
+var RefsBox = function (_React$Component) {
+  _inherits(RefsBox, _React$Component);
+
+  function RefsBox(props) {
+    _classCallCheck(this, RefsBox);
+
+    var _this = _possibleConstructorReturn(this, (RefsBox.__proto__ || Object.getPrototypeOf(RefsBox)).call(this, props));
+
+    _this.state = {
+      link: ''
+    };
+
+    _this.handleChange = _this.handleChange.bind(_this);
+    _this.handleShorten = _this.handleShorten.bind(_this);
+    return _this;
+  }
+
+  _createClass(RefsBox, [{
+    key: 'handleShorten',
+    value: function handleShorten(event) {
+      event.preventDefault();
+      var link = this.state.link;
+      console.log(link);
+    }
+  }, {
+    key: 'handleChange',
+    value: function handleChange(event) {
+      var link = event.target.value;
+      this.setState({ link: link });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { id: 'container', className: 'clearfix' },
+        _react2.default.createElement(
+          'div',
+          { className: 'shorten-container' },
+          _react2.default.createElement(
+            'h1',
+            { className: 'page-title' },
+            'HARNESS EVERY CLICK, TAP AND SWIPE.'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'join-bitref' },
+            'Brand, track and optimize every touchpoint with Bitly, the world\'s leading link management platform.'
+          ),
+          _react2.default.createElement(
+            'div',
+            { id: 'form_container', className: 'form-container' },
+            _react2.default.createElement(
+              'form',
+              { id: 'unAuthShortenForm' },
+              _react2.default.createElement('input', {
+                id: 'shorten_url',
+                name: 'url',
+                className: 'shorten-input',
+                placeholder: 'Paste a link to shorten it',
+                value: this.state.link,
+                type: 'text',
+                onChange: this.handleChange
+              }),
+              _react2.default.createElement('input', { id: 'shorten_btn', className: 'button-ref', value: 'Shorten', type: 'submit', onClick: this.handleShorten })
+            ),
+            _react2.default.createElement('div', { id: 'shorten_actions' })
+          ),
+          _react2.default.createElement(_RefsList2.default, null)
+        )
+      );
+    }
+  }]);
+
+  return RefsBox;
+}(_react2.default.Component);
+
+exports.default = RefsBox;
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(9);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _RefsItem = __webpack_require__(32);
+
+var _RefsItem2 = _interopRequireDefault(_RefsItem);
+
+var _SignupPromotion = __webpack_require__(33);
+
+var _SignupPromotion2 = _interopRequireDefault(_SignupPromotion);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// eslint-disable-line no-unused-vars
+
+function RefsList(props) {
+  return _react2.default.createElement(
+    'div',
+    { className: 'link-container mid-container' },
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'ul',
+        { id: 'anon_history', className: 'anon_history' },
+        _react2.default.createElement(_RefsItem2.default, { itemId: props.itemId, shortLink: props.shortLink, refLink: props.refLink }),
+        _react2.default.createElement(_SignupPromotion2.default, null),
+        _react2.default.createElement(_RefsItem2.default, { itemId: props.itemId, shortLink: props.shortLink, refLink: props.refLink })
+      )
+    )
+  );
+} // eslint-disable-line no-unused-vars
+// eslint-disable-line no-unused-vars
+
+
+RefsList.propTypes = {
+  itemId: _propTypes2.default.string,
+  shortLink: _propTypes2.default.string,
+  refLink: _propTypes2.default.string
+};
+
+exports.default = RefsList;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(9);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function RefsItem(props) {
+  return _react2.default.createElement(
+    'li',
+    {
+      id: props.itemId,
+      className: 'shortened_link list_item',
+      'data-user_hash': props.itemId,
+      'data-short_link': props.shortLink
+    },
+    _react2.default.createElement(
+      'div',
+      { className: 'unauth-title' },
+      _react2.default.createElement(
+        'a',
+        { className: 'article-title', href: props.refLink },
+        props.refLink
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'unauth-title-url' },
+      _react2.default.createElement(
+        'a',
+        { className: 'article-title smaller', href: props.refLink },
+        props.refLink
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'unauth_capsule clearfix' },
+      _react2.default.createElement(
+        'a',
+        { className: 'short-url', href: props.shortLink },
+        props.shortLink
+      ),
+      _react2.default.createElement('input', { className: 'copy-input', value: props.shortLink }),
+      _react2.default.createElement(
+        'a',
+        { href: '#', className: 'copy button primary' },
+        'Copy'
+      ),
+      _react2.default.createElement(
+        'a',
+        { className: 'info_page', href: props.shortLink },
+        _react2.default.createElement('i', { className: 'default fa fa-bar-chart-o' }),
+        ' 0'
+      )
+    )
+  );
+} // eslint-disable-line no-unused-vars
+
+
+RefsItem.propTypes = {
+  itemId: _propTypes2.default.string,
+  shortLink: _propTypes2.default.string,
+  refLink: _propTypes2.default.string
+};
+
+exports.default = RefsItem;
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -20183,43 +20433,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // eslint-disable-line no-unused-vars
 
-function ShortenBox() {
+function SignupPromotion() {
   return _react2.default.createElement(
     "div",
-    { id: "container", className: "clearfix" },
+    { className: "signup-promotion" },
     _react2.default.createElement(
-      "div",
-      { className: "shorten-container" },
-      _react2.default.createElement(
-        "h1",
-        { className: "page-title" },
-        "HARNESS EVERY CLICK, TAP AND SWIPE."
-      ),
-      _react2.default.createElement(
-        "div",
-        { className: "join-bitref" },
-        "Brand, track and optimize every touchpoint with Bitly, the world's leading link management platform."
-      ),
-      _react2.default.createElement(
-        "div",
-        { id: "form_container", className: "form-container" },
-        _react2.default.createElement(
-          "form",
-          { method: "POST", action: "https://bitly.com/", name: "shortenUrl", id: "unAuthShortenForm" },
-          _react2.default.createElement(
-            "fieldset",
-            { className: "cf" },
-            _react2.default.createElement("input", { id: "shorten_url", taborder: "1", name: "url", className: "shorten-input", placeholder: "Paste a link to shorten it", value: "", type: "text" }),
-            _react2.default.createElement("input", { id: "shorten_btn", className: "button-ref", value: "Shorten", type: "submit" })
-          )
-        ),
-        _react2.default.createElement("div", { id: "shorten_actions" })
-      )
+      "span",
+      { className: "signup-tagline" },
+      "Want to customize, share, and track your links?"
+    ),
+    _react2.default.createElement(
+      "a",
+      { href: "#" },
+      "Sign Up For Free"
     )
   );
 }
 
-exports.default = ShortenBox;
+exports.default = SignupPromotion;
 
 /***/ })
 /******/ ]);

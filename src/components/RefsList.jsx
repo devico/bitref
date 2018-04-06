@@ -1,7 +1,8 @@
 import React from 'react' // eslint-disable-line no-unused-vars
+import PT from 'prop-types'
 
-import RefsItem from './RefsItem'
-import SignupPromotion from './SignupPromotion'
+import RefsItem from './RefsItem' // eslint-disable-line no-unused-vars
+import SignupPromotion from './SignupPromotion' // eslint-disable-line no-unused-vars
 
 function RefsList(props) {
   return <div className="link-container mid-container">
@@ -15,10 +16,10 @@ function RefsList(props) {
   </div>
 }
 
-RefsListItem.propTypes = {
-  itemId: PT.string.isRequired,
-  shortLink: PT.string.isRequired,
-  refLink: PT.string.isRequired
+RefsList.propTypes = {
+  itemId: PT.string,
+  shortLink: PT.string,
+  refLink: PT.string
 }
 
 export default RefsList

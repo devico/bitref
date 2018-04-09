@@ -1,13 +1,11 @@
 import axios from 'axios'
 
-export const getUrl = url => {
-  axios.get(url)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
+export const getTitle = url => {
+  const title = axios.get(url)
+    .then(res => res.data.match(/<title[^>]*>([^<]+)<\/title>/)[1])
+    .catch(error => {
+      // eslint-disable-next-line no-console
+      console.error(error)
     })
-  .catch((error) => {
-    alert('Не удалось загрузить  ссылку')
-    console.error(error)
-  })
+  return title
 }

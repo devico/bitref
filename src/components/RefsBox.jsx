@@ -1,7 +1,8 @@
 import React from 'react' // eslint-disable-line no-unused-vars
+import cookie from 'react-cookies' // eslint-disable-line no-unused-vars
 
 import RefsList from './RefsList' // eslint-disable-line no-unused-vars
-import {getUrl} from '../helpers'
+import {getTitle} from '../helpers'
 
 export default class RefsBox extends React.Component {
   constructor(props) {
@@ -17,8 +18,15 @@ export default class RefsBox extends React.Component {
   handleShorten(event) {
     event.preventDefault()
     const link = this.state.link
-    getUrl(link)
+    const title = getTitle(link)
+    cookie.remove('downLinkTitle', {path: '/'})
+    cookie.remove('downLink', {path: '/'})
+    cookie.save('downLink', cookie.select('topLink'), {path: '/'})
+    cookie.save('downLinkTitle', cookie.select('topLinkTitle'), {path: '/'})
+    cookie.save('topLink', link, {path: '/'})
+    cookie.save('topLinkTitle', title, {path: '/'})
   }
+
   handleChange(event) {
     const link = event.target.value
     this.setState({link})
@@ -46,7 +54,7 @@ export default class RefsBox extends React.Component {
           </form>
           <div id="shorten_actions"></div>
         </div>
-        <RefsList />
+        <RefsList cookies={cookie.loadAll()}/>
       </div>
     </div>
   }

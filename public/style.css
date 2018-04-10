@@ -594,18 +594,41 @@ a.enterprise:hover{background-color:rgba(255,255,255,0.9)}
   height:80px;
   background-color:#eff7fc;
   padding:20px 24px 0;
-  display:none
+  display: block
+}
+
+.signup-promotion a {
+  display:block;
+  width:200px;
+  height:60px;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight:500;
+  font-size:16px;
+  color:#ee6123;
+  border:1px solid #ee6123;
+  float:right;
+  line-height:60px;
+  margin-top:25px;
+  margin-right:0;
+  text-align:center
 }
 
 .one-or-more-links .signup-promotion{display:block}
 
-.signup-tagline{line-height:18px;color:#003042;font-size:14px;font-weight:500}
+.signup-tagline{
+  line-height:18px;
+  color:#003042;
+  font-size:14px;
+  font-weight:500;
+  display: block;
+  float: left
+}
 
 a.sign-up-link{color:#ee6123}
 
 a.sign-up-link:hover{text-decoration:none;border-bottom:1px solid #ee6123}
 
-.signup-promotion a.header-login{display:none}
+.signup-promotion a.header-login{display:block}
 
 .stage-pod-light{background:#f7fbfd}
 

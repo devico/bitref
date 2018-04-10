@@ -1,6 +1,6 @@
-import axios from 'axios'
+const axios = require('axios')
 
-export const getTitle = url => {
+export const getTitle = (url) => {
   const title = axios.get(url)
     .then(res => res.data.match(/<title[^>]*>([^<]+)<\/title>/)[1])
     .catch(error => {
@@ -21,5 +21,5 @@ let generateLinkHash = () => {
 }
 
 export const generateShortUrl = () => { 
-	return `https://bit.ref/${gengenerateLinkHash()}`
+	return `https://bit.ref/${generateLinkHash()}`
 }

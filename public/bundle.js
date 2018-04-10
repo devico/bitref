@@ -20081,6 +20081,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
@@ -20093,6 +20095,12 @@ var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _reactCookies = __webpack_require__(38);
+
+var _reactCookies2 = _interopRequireDefault(_reactCookies);
+
+var _helpers = __webpack_require__(43);
+
 var _Header = __webpack_require__(36);
 
 var _Header2 = _interopRequireDefault(_Header);
@@ -20103,20 +20111,76 @@ var _RefsBox2 = _interopRequireDefault(_RefsBox);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// eslint-disable-line no-unused-vars
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// eslint-disable-line no-unused-vars
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-// eslint-disable-line no-unused-vars
-function App() {
-  return _react2.default.createElement(
-    'div',
-    { className: 'stage' },
-    _react2.default.createElement(_Header2.default, null),
-    _react2.default.createElement(_RefsBox2.default, null)
-  );
-} // eslint-disable-line no-unused-vars
-// eslint-disable-line no-unused-vars
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var App = function (_React$Component) {
+  _inherits(App, _React$Component);
+
+  function App(props) {
+    _classCallCheck(this, App);
+
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _this.state = {
+      cookies: _reactCookies2.default.loadAll(),
+      link: ''
+    };
+
+    _this.generateShortenUrl = _this.generateShortenUrl.bind(_this);
+    _this.handleChange = _this.handleChange.bind(_this);
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: 'handleChange',
+    value: function handleChange(event) {
+      var link = event.target.value;
+      this.setState({ link: link });
+    }
+  }, {
+    key: 'generateShortenUrl',
+    value: function generateShortenUrl(event) {
+      event.preventDefault();
+      var link = this.state.link;
+      var title = (0, _helpers.getTitle)(link);
+      var shortLink = (0, _helpers.generateShortUrl)();
+      _reactCookies2.default.remove('downTitleLink', { path: '/' });
+      _reactCookies2.default.remove('downRefLink', { path: '/' });
+      _reactCookies2.default.remove('downShortLink', { path: '/' });
+      _reactCookies2.default.save('downTitleLink', _reactCookies2.default.load('topTitleLink'), { path: '/' });
+      _reactCookies2.default.save('downRefLink', _reactCookies2.default.load('topRefLink'), { path: '/' });
+      _reactCookies2.default.save('downShortLink', _reactCookies2.default.load('topShortLink'), { path: '/' });
+      _reactCookies2.default.save('topRefLink', link, { path: '/' });
+      _reactCookies2.default.save('topShortLink', shortLink, { path: '/' });
+      _reactCookies2.default.save('topTitleLink', title, { path: '/' });
+      this.setState({
+        link: '',
+        cookies: _reactCookies2.default.loadAll()
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { className: 'stage' },
+        _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(_RefsBox2.default, {
+          cookies: this.state.cookies,
+          onChange: this.handleChange,
+          link: this.state.link,
+          onClickShorten: this.generateShortenUrl })
+      );
+    }
+  }]);
+
+  return App;
+}(_react2.default.Component);
+
 exports.default = App;
 
 /***/ }),
@@ -20854,8 +20918,7 @@ exports.default = Header;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+exports.default = RefsBox;
 
 var _react = __webpack_require__(2);
 
@@ -20865,112 +20928,69 @@ var _reactCookies = __webpack_require__(38);
 
 var _reactCookies2 = _interopRequireDefault(_reactCookies);
 
+var _propTypes = __webpack_require__(10);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _RefsList = __webpack_require__(40);
 
 var _RefsList2 = _interopRequireDefault(_RefsList);
 
-var _helpers = __webpack_require__(43);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } // eslint-disable-line no-unused-vars
-// eslint-disable-line no-unused-vars
-
-// eslint-disable-line no-unused-vars
-
-
-var RefsBox = function (_React$Component) {
-  _inherits(RefsBox, _React$Component);
-
-  function RefsBox(props) {
-    _classCallCheck(this, RefsBox);
-
-    var _this = _possibleConstructorReturn(this, (RefsBox.__proto__ || Object.getPrototypeOf(RefsBox)).call(this, props));
-
-    _this.state = {
-      link: ''
-    };
-
-    _this.handleChange = _this.handleChange.bind(_this);
-    _this.handleShorten = _this.handleShorten.bind(_this);
-    return _this;
-  }
-
-  _createClass(RefsBox, [{
-    key: 'handleShorten',
-    value: function handleShorten(event) {
-      event.preventDefault();
-      var link = this.state.link;
-      var title = (0, _helpers.getTitle)(link);
-      var shortLink = (0, _helpers.generateShortUrl)();
-      _reactCookies2.default.remove('downTitleLink', { path: '/' });
-      _reactCookies2.default.remove('downRefLink', { path: '/' });
-      _reactCookies2.default.remove('downShortLink', { path: '/' });
-      _reactCookies2.default.save('downTitleLink', _reactCookies2.default.load('topTitleLink'), { path: '/' });
-      _reactCookies2.default.save('downRefLink', _reactCookies2.default.load('topRefLink'), { path: '/' });
-      _reactCookies2.default.save('downShortLink', _reactCookies2.default.load('topShortLink'), { path: '/' });
-      _reactCookies2.default.save('topRefLink', link, { path: '/' });
-      _reactCookies2.default.save('topShortLink', shortLink, { path: '/' });
-      _reactCookies2.default.save('topTitleLink', title, { path: '/' });
-    }
-  }, {
-    key: 'handleChange',
-    value: function handleChange(event) {
-      var link = event.target.value;
-      this.setState({ link: link });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
+function RefsBox(props) {
+  return _react2.default.createElement(
+    'div',
+    { id: 'container', className: 'clearfix' },
+    _react2.default.createElement(
+      'div',
+      { className: 'shorten-container' },
+      _react2.default.createElement(
+        'h1',
+        { className: 'page-title' },
+        'HARNESS EVERY CLICK, TAP AND SWIPE.'
+      ),
+      _react2.default.createElement(
         'div',
-        { id: 'container', className: 'clearfix' },
+        { className: 'join-bitref' },
+        'Brand, track and optimize every touchpoint with Bitly, the world\'s leading link management platform.'
+      ),
+      _react2.default.createElement(
+        'div',
+        { id: 'form_container', className: 'form-container' },
         _react2.default.createElement(
-          'div',
-          { className: 'shorten-container' },
-          _react2.default.createElement(
-            'h1',
-            { className: 'page-title' },
-            'HARNESS EVERY CLICK, TAP AND SWIPE.'
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'join-bitref' },
-            'Brand, track and optimize every touchpoint with Bitly, the world\'s leading link management platform.'
-          ),
-          _react2.default.createElement(
-            'div',
-            { id: 'form_container', className: 'form-container' },
-            _react2.default.createElement(
-              'form',
-              { id: 'unAuthShortenForm' },
-              _react2.default.createElement('input', {
-                id: 'shorten_url',
-                name: 'url',
-                className: 'shorten-input',
-                placeholder: 'Paste a link to shorten it',
-                value: this.state.link,
-                type: 'text',
-                onChange: this.handleChange
-              }),
-              _react2.default.createElement('input', { id: 'shorten_btn', className: 'button-ref', defaultValue: '', type: 'submit', onClick: this.handleShorten })
-            ),
-            _react2.default.createElement('div', { id: 'shorten_actions' })
-          ),
-          _react2.default.createElement(_RefsList2.default, { cookies: _reactCookies2.default.loadAll() })
-        )
-      );
-    }
-  }]);
+          'form',
+          { id: 'unAuthShortenForm' },
+          _react2.default.createElement('input', {
+            id: 'shorten_url',
+            name: 'url',
+            className: 'shorten-input',
+            placeholder: 'Paste a link to shorten it',
+            value: props.link,
+            type: 'text',
+            onChange: props.onChange
+          }),
+          _react2.default.createElement('input', {
+            id: 'shorten_btn',
+            className: 'button-ref',
+            defaultValue: '',
+            type: 'submit',
+            onClick: props.onClickShorten
+          })
+        ),
+        _react2.default.createElement('div', { id: 'shorten_actions' })
+      ),
+      _react2.default.createElement(_RefsList2.default, { cookies: props.cookies })
+    )
+  );
+}
 
-  return RefsBox;
-}(_react2.default.Component);
-
-exports.default = RefsBox;
+RefsBox.propTypes = {
+  cookies: _propTypes2.default.object,
+  link: _propTypes2.default.string,
+  onChange: _propTypes2.default.func.isRequired,
+  onClickShorten: _propTypes2.default.func.isRequired
+};
 
 /***/ }),
 /* 38 */
@@ -21542,16 +21562,10 @@ exports.default = SignupPromotion;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.generateShortUrl = exports.getTitle = undefined;
-
-var _axios = __webpack_require__(44);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var axios = __webpack_require__(44);
 
 var getTitle = exports.getTitle = function getTitle(url) {
-  var title = _axios2.default.get(url).then(function (res) {
+  var title = axios.get(url).then(function (res) {
     return res.data.match(/<title[^>]*>([^<]+)<\/title>/)[1];
   }).catch(function (error) {
     console.error(error);
@@ -21572,7 +21586,7 @@ var generateLinkHash = function generateLinkHash() {
 };
 
 var generateShortUrl = exports.generateShortUrl = function generateShortUrl() {
-  return 'https://bit.ref/' + gengenerateLinkHash();
+  return 'https://bit.ref/' + generateLinkHash();
 };
 
 /***/ }),

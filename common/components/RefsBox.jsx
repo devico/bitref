@@ -2,7 +2,7 @@ import React from 'react' // eslint-disable-line no-unused-vars
 import cookie from 'react-cookies' // eslint-disable-line no-unused-vars
 
 import RefsList from './RefsList' // eslint-disable-line no-unused-vars
-import {getTitle} from '../helpers'
+import {getTitle, generateShortUrl} from '../helpers'
 
 export default class RefsBox extends React.Component {
   constructor(props) {
@@ -19,12 +19,16 @@ export default class RefsBox extends React.Component {
     event.preventDefault()
     const link = this.state.link
     const title = getTitle(link)
-    cookie.remove('downLinkTitle', {path: '/'})
-    cookie.remove('downLink', {path: '/'})
-    cookie.save('downLink', cookie.select('topLink'), {path: '/'})
-    cookie.save('downLinkTitle', cookie.select('topLinkTitle'), {path: '/'})
-    cookie.save('topLink', link, {path: '/'})
-    cookie.save('topLinkTitle', title, {path: '/'})
+    const shortLink = generateShortUrl()
+    cookie.remove('downTitleLink', {path: '/'})
+    cookie.remove('downRefLink', {path: '/'})
+    cookie.remove('downShortLink', {path: '/'})
+    cookie.save('downTitleLink', cookie.load('topTitleLink'), {path: '/'})
+    cookie.save('downRefLink', cookie.load('topRefLink'), {path: '/'})
+    cookie.save('downShortLink', cookie.load('topShortLink'), {path: '/'})
+    cookie.save('topRefLink', link, {path: '/'})
+    cookie.save('topShortLink', shortLink, {path: '/'})
+    cookie.save('topTitleLink', title, {path: '/'})
   }
 
   handleChange(event) {
@@ -50,7 +54,7 @@ export default class RefsBox extends React.Component {
               type="text"
               onChange={this.handleChange}
             />
-            <input id="shorten_btn" className="button-ref" value="Shorten" type="submit" onClick={this.handleShorten}/>
+            <input id="shorten_btn" className="button-ref" defaultValue="" type="submit" onClick={this.handleShorten} />
           </form>
           <div id="shorten_actions"></div>
         </div>

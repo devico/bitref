@@ -1626,10 +1626,7 @@ var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// eslint-disable-line no-unused-vars
-
-// eslint-disable-line no-unused-vars
-_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root')); // eslint-disable-line no-undef
+_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
 /***/ }),
 /* 23 */
@@ -20909,12 +20906,16 @@ var RefsBox = function (_React$Component) {
       event.preventDefault();
       var link = this.state.link;
       var title = (0, _helpers.getTitle)(link);
-      _reactCookies2.default.remove('downLinkTitle', { path: '/' });
-      _reactCookies2.default.remove('downLink', { path: '/' });
-      _reactCookies2.default.save('downLink', _reactCookies2.default.select('topLink'), { path: '/' });
-      _reactCookies2.default.save('downLinkTitle', _reactCookies2.default.select('topLinkTitle'), { path: '/' });
-      _reactCookies2.default.save('topLink', link, { path: '/' });
-      _reactCookies2.default.save('topLinkTitle', title, { path: '/' });
+      var shortLink = (0, _helpers.generateShortUrl)();
+      _reactCookies2.default.remove('downTitleLink', { path: '/' });
+      _reactCookies2.default.remove('downRefLink', { path: '/' });
+      _reactCookies2.default.remove('downShortLink', { path: '/' });
+      _reactCookies2.default.save('downTitleLink', _reactCookies2.default.load('topTitleLink'), { path: '/' });
+      _reactCookies2.default.save('downRefLink', _reactCookies2.default.load('topRefLink'), { path: '/' });
+      _reactCookies2.default.save('downShortLink', _reactCookies2.default.load('topShortLink'), { path: '/' });
+      _reactCookies2.default.save('topRefLink', link, { path: '/' });
+      _reactCookies2.default.save('topShortLink', shortLink, { path: '/' });
+      _reactCookies2.default.save('topTitleLink', title, { path: '/' });
     }
   }, {
     key: 'handleChange',
@@ -20956,7 +20957,7 @@ var RefsBox = function (_React$Component) {
                 type: 'text',
                 onChange: this.handleChange
               }),
-              _react2.default.createElement('input', { id: 'shorten_btn', className: 'button-ref', value: 'Shorten', type: 'submit', onClick: this.handleShorten })
+              _react2.default.createElement('input', { id: 'shorten_btn', className: 'button-ref', defaultValue: '', type: 'submit', onClick: this.handleShorten })
             ),
             _react2.default.createElement('div', { id: 'shorten_actions' })
           ),
@@ -21395,9 +21396,9 @@ function RefsList(props) {
       _react2.default.createElement(
         'ul',
         { id: 'anon_history', className: 'anon_history' },
-        _react2.default.createElement(_RefsItem2.default, { title: cookies.topLinkTitile, refLink: cookies.topLink }),
+        _react2.default.createElement(_RefsItem2.default, { title: cookies.topTitleLink, refLink: cookies.topRefLink, shortLink: cookies.topShortLink }),
         _react2.default.createElement(_SignupPromotion2.default, null),
-        _react2.default.createElement(_RefsItem2.default, { title: cookies.downLinkTitile, refLink: cookies.downLink })
+        _react2.default.createElement(_RefsItem2.default, { title: cookies.downTitleLink, refLink: cookies.downRefLink, shortLink: cookies.downShortLink })
       )
     )
   );
@@ -21436,9 +21437,10 @@ function RefsItem(props) {
   return _react2.default.createElement(
     'li',
     {
+      id: props.itemId,
       className: 'shortened_link list_item',
-      'data-user_hash': '#',
-      'data-short_link': '#'
+      'data-user_hash': props.itemId,
+      'data-short_link': props.shortLink
     },
     _react2.default.createElement(
       'div',
@@ -21463,18 +21465,18 @@ function RefsItem(props) {
       { className: 'unauth_capsule clearfix' },
       _react2.default.createElement(
         'a',
-        { className: 'short-url', href: '#' },
-        'Short url'
+        { className: 'short-url', href: props.shortLink },
+        props.shortLink
       ),
-      _react2.default.createElement('input', { className: 'copy-input', value: 'short url' }),
+      _react2.default.createElement('input', { className: 'copy-input', defaultValue: 'short url' }),
       _react2.default.createElement(
         'a',
-        { href: '#', className: 'copy button primary' },
+        { href: props.shortLink, className: 'copy button primary' },
         'Copy'
       ),
       _react2.default.createElement(
         'a',
-        { className: 'info_page', href: '#' },
+        { className: 'info_page', href: props.shortLink },
         _react2.default.createElement('i', { className: 'default fa fa-bar-chart-o' }),
         ' 0'
       )
@@ -21484,6 +21486,8 @@ function RefsItem(props) {
 
 
 RefsItem.propTypes = {
+  itemId: _propTypes2.default.string,
+  shortLink: _propTypes2.default.string,
   title: _propTypes2.default.string,
   refLink: _propTypes2.default.string
 };
@@ -21538,7 +21542,7 @@ exports.default = SignupPromotion;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getTitle = undefined;
+exports.generateShortUrl = exports.getTitle = undefined;
 
 var _axios = __webpack_require__(44);
 
@@ -21550,10 +21554,25 @@ var getTitle = exports.getTitle = function getTitle(url) {
   var title = _axios2.default.get(url).then(function (res) {
     return res.data.match(/<title[^>]*>([^<]+)<\/title>/)[1];
   }).catch(function (error) {
-    // eslint-disable-next-line no-console
     console.error(error);
   });
   return title;
+};
+
+var range = function range(from, to) {
+  return Array(to).fill(from).map(function (_, i) {
+    return i;
+  });
+};
+
+var generateLinkHash = function generateLinkHash() {
+  return range(0, 1).map(function () {
+    return Math.random().toString(16).slice(-7);
+  }).join('-');
+};
+
+var generateShortUrl = exports.generateShortUrl = function generateShortUrl() {
+  return 'https://bit.ref/' + gengenerateLinkHash();
 };
 
 /***/ }),
@@ -22446,3 +22465,4 @@ module.exports = function spread(callback) {
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=bundle.js.map

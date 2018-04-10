@@ -9,9 +9,9 @@ function RefsList(props) {
   return <div className="link-container mid-container">
     <div>
       <ul id="anon_history" className="anon_history">
-        <RefsItem title={cookies.topLinkTitile} refLink={cookies.topLink}/>
+        <RefsItem title={cookies.topTitleLink} refLink={cookies.topRefLink} shortLink={cookies.topShortLink}/>
         <SignupPromotion />
-        <RefsItem title={cookies.downLinkTitile} refLink={cookies.downLink}/>
+        <RefsItem title={cookies.downTitleLink} refLink={cookies.downRefLink} shortLink={cookies.downShortLink}/>
       </ul>
     </div>
   </div>

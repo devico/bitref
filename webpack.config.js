@@ -1,5 +1,5 @@
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./client/index.js",
 
   output: {
     filename: "bundle.js",
@@ -14,6 +14,14 @@ module.exports = {
     dns: 'mock',
     net: 'mock'
   },
+
+  watch: true,
+
+  watchOptions: {
+    ignored: /node_modules/
+  },
+
+  devtool: "source-map",
 
   module: {
     loaders: [

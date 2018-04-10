@@ -20973,7 +20973,8 @@ function RefsBox(props) {
           _react2.default.createElement('input', {
             id: 'shorten_btn',
             className: 'button-ref',
-            defaultValue: '',
+            value: 'Shorten',
+            readOnly: true,
             type: 'submit',
             onClick: props.onClickShorten
           })

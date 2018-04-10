@@ -23,10 +23,11 @@ export default function RefsBox(props) {
             onChange={props.onChange}
           />
           <input 
-            id="shorten_btn" 
-            className="button-ref" 
-            defaultValue="" 
-            type="submit" 
+            id="shorten_btn"
+            className="button-ref"
+            value="Shorten"
+            readOnly
+            type="submit"
             onClick={props.onClickShorten} 
           />
         </form>

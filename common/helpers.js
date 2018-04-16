@@ -1,12 +1,11 @@
 const axios = require('axios')
 
 export const getTitle = (url) => {
-  const title = axios.get(url)
-    .then(res => res.data.match(/<title[^>]*>([^<]+)<\/title>/)[1])
+  return axios.get('/getlink',{params: {link: url}})
+    .then(res => res.data)
     .catch(error => {
       console.error(error)
     })
-  return title
 }
 
 let range = (from, to) => {
@@ -21,5 +20,5 @@ let generateLinkHash = () => {
 }
 
 export const generateShortUrl = () => { 
-	return `https://bit.ref/${generateLinkHash()}`
+	return `http://bit.ref/${generateLinkHash()}`
 }

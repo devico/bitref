@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import cookie from 'react-cookies'
 
-import {getTitle, generateShortUrl} from '../helpers'
+import {getTitle, generateShortUrl} from '../../common/helpers'
 import Header from './Header'
 import RefsBox from './RefsBox'
 
@@ -28,6 +28,7 @@ export default class App extends React.Component {
     event.preventDefault()
     const link = this.state.link
     const title = getTitle(link)
+    console.log(title)
     const shortLink = generateShortUrl()
     cookie.remove('downTitleLink', {path: '/'})
     cookie.remove('downRefLink', {path: '/'})
@@ -51,7 +52,8 @@ export default class App extends React.Component {
         cookies={this.state.cookies}
         onChange={this.handleChange}
         link={this.state.link}
-        onClickShorten={this.generateShortenUrl}/>
+        onClickShorten={this.generateShortenUrl}
+      />
   </div>
   }
 }

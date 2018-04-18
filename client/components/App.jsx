@@ -28,7 +28,7 @@ export default class App extends React.Component {
     event.preventDefault()
     const link = this.state.link
     const title = getTitle(link)
-    console.log(title)
+    // console.log(title)
     const shortLink = generateShortUrl()
     cookie.remove('downTitleLink', {path: '/'})
     cookie.remove('downRefLink', {path: '/'})

@@ -9,7 +9,7 @@ function RefsItem(props) {
     data-short_link={props.shortLink}
   >
     <div className="unauth-title">
-      <a className="article-title" href={props.refLink}>{props.refLink}</a>
+      <a className="article-title" href={props.refLink}>{props.title}</a>
     </div>
     <div className="unauth-title-url">
       <a className="article-title smaller" href={props.refLink}>{props.refLink}</a>

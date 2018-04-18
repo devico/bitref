@@ -20326,7 +20326,7 @@ var App = function (_React$Component) {
       event.preventDefault();
       var link = this.state.link;
       var title = (0, _helpers.getTitle)(link);
-      console.log(title);
+      // console.log(title)
       var shortLink = (0, _helpers.generateShortUrl)();
       _reactCookies2.default.remove('downTitleLink', { path: '/' });
       _reactCookies2.default.remove('downRefLink', { path: '/' });
@@ -21189,32 +21189,34 @@ function tryDecode(str, decode) {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 var axios = __webpack_require__(39);
 
 var getTitle = exports.getTitle = function getTitle(url) {
-	return axios.get('/getlink', { params: { link: url } }).then(function (res) {
-		return res.data;
-	}).catch(function (error) {
-		console.error(error);
-	});
+  axios.get('/getlink', { params: { link: url } }).then(function (res) {
+    return res.data;
+  }).then(function (data) {
+    return data;
+  }).catch(function (error) {
+    console.error(error);
+  });
 };
 
 var range = function range(from, to) {
-	return Array(to).fill(from).map(function (_, i) {
-		return i;
-	});
+  return Array(to).fill(from).map(function (_, i) {
+    return i;
+  });
 };
 
 var generateLinkHash = function generateLinkHash() {
-	return range(0, 1).map(function () {
-		return Math.random().toString(16).slice(-7);
-	}).join('-');
+  return range(0, 1).map(function () {
+    return Math.random().toString(16).slice(-7);
+  }).join('-');
 };
 
 var generateShortUrl = exports.generateShortUrl = function generateShortUrl() {
-	return 'http://bit.ref/' + generateLinkHash();
+  return 'http://bit.ref/' + generateLinkHash();
 };
 
 /***/ }),
@@ -22395,7 +22397,7 @@ function RefsItem(props) {
       _react2.default.createElement(
         'a',
         { className: 'article-title', href: props.refLink },
-        props.refLink
+        props.title
       )
     ),
     _react2.default.createElement(

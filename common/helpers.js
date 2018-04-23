@@ -1,29 +1,34 @@
 const axios = require('axios')
 
-export const getTitle = (url) => {
-  axios.get('/getlink', {params: {link: url}})
+export const addLinkData = (url) => axios.post('/api/links', {params: {link: url}})
+
+export const getLinks = () => {
+  let links = {}
+  axios.get('/api/links')
     .then(res => {
-      return res.data
+      links = res.data
     })
-    .then(data => {
-      return data
-    })
-    .catch(error => {
-      console.error(error)
-    })
+    .catch(err => err)
+  return links
+}
+
+export const getOriginalLink = (url) => {
+  axios.get(`/api/links/${url}`)
+           .then(res => console.log(res.data))
+           .catch(err => err)
 }
 
 let range = (from, to) => {
-	return Array(to).fill(from).map((_, i) => i)
+  return Array(to).fill(from).map((_, i) => i)
 }
 
 let generateLinkHash = () => {
-	return range(0, 1)
-    .map(() => { 
+  return range(0, 1)
+    .map(() => {
       return Math.random().toString(16).slice(-7)
     }).join('-');
 }
 
-export const generateShortUrl = () => { 
-	return `http://bit.ref/${generateLinkHash()}`
+export const generateShortUrl = () => {
+  return generateLinkHash()
 }

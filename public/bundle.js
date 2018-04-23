@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 23);
+/******/ 	return __webpack_require__(__webpack_require__.s = 22);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -260,8 +260,8 @@ process.umask = function() { return 0; };
 "use strict";
 
 
-var bind = __webpack_require__(18);
-var isBuffer = __webpack_require__(41);
+var bind = __webpack_require__(17);
+var isBuffer = __webpack_require__(39);
 
 /*global toString:true*/
 
@@ -571,9 +571,9 @@ module.exports = {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(24);
+  module.exports = __webpack_require__(23);
 } else {
-  module.exports = __webpack_require__(25);
+  module.exports = __webpack_require__(24);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -874,41 +874,6 @@ module.exports = warning;
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
-
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(35)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(36)();
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -922,7 +887,7 @@ if (process.env.NODE_ENV !== 'production') {
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(5);
   var warning = __webpack_require__(7);
-  var ReactPropTypesSecret = __webpack_require__(10);
+  var ReactPropTypesSecret = __webpack_require__(9);
   var loggedTypeFailures = {};
 }
 
@@ -973,7 +938,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -992,6 +957,41 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(34)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(35)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -999,7 +999,7 @@ module.exports = ReactPropTypesSecret;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(1);
-var normalizeHeaderName = __webpack_require__(43);
+var normalizeHeaderName = __webpack_require__(41);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -1015,10 +1015,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(19);
+    adapter = __webpack_require__(18);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(19);
+    adapter = __webpack_require__(18);
   }
   return adapter;
 }
@@ -1134,9 +1134,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(26);
+  module.exports = __webpack_require__(25);
 } else {
-  module.exports = __webpack_require__(29);
+  module.exports = __webpack_require__(28);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -1309,7 +1309,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(27);
+var isTextNode = __webpack_require__(26);
 
 /*eslint-disable no-bitwise */
 
@@ -1341,185 +1341,6 @@ module.exports = containsNode;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-exports.load = load;
-exports.loadAll = loadAll;
-exports.select = select;
-exports.save = save;
-exports.remove = remove;
-exports.setRawCookie = setRawCookie;
-exports.plugToRequest = plugToRequest;
-
-var _cookie = __webpack_require__(37);
-
-var _cookie2 = _interopRequireDefault(_cookie);
-
-var _objectAssign = __webpack_require__(4);
-
-var _objectAssign2 = _interopRequireDefault(_objectAssign);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var IS_NODE = typeof document === 'undefined' || process && process.env && process.env.NODE_ENV === 'test';
-var _rawCookie = {};
-var _res = void 0;
-
-function _isResWritable() {
-  return _res && !_res.headersSent;
-}
-
-function load(name, doNotParse) {
-  var cookies = IS_NODE ? _rawCookie : _cookie2.default.parse(document.cookie);
-  var cookieVal = cookies && cookies[name];
-
-  if (typeof doNotParse === 'undefined') {
-    doNotParse = !cookieVal || cookieVal[0] !== '{' && cookieVal[0] !== '[';
-  }
-
-  if (!doNotParse) {
-    try {
-      cookieVal = JSON.parse(cookieVal);
-    } catch (err) {
-      // Not serialized object
-    }
-  }
-
-  return cookieVal;
-}
-
-function loadAll(doNotParse) {
-  var cookies = IS_NODE ? _rawCookie : _cookie2.default.parse(document.cookie);
-  var cookieVal = cookies;
-
-  if (typeof doNotParse === 'undefined') {
-    doNotParse = !cookieVal || cookieVal[0] !== '{' && cookieVal[0] !== '[';
-  }
-
-  if (!doNotParse) {
-    try {
-      cookieVal = JSON.parse(cookieVal);
-    } catch (err) {
-      // Not serialized object
-    }
-  }
-
-  return cookieVal;
-}
-
-function select(regex) {
-  var cookies = IS_NODE ? _rawCookie : _cookie2.default.parse(document.cookie);
-
-  if (!cookies) {
-    return {};
-  }
-
-  if (!regex) {
-    return cookies;
-  }
-
-  return Object.keys(cookies).reduce(function (accumulator, name) {
-    if (!regex.test(name)) {
-      return accumulator;
-    }
-
-    var newCookie = {};
-    newCookie[name] = cookies[name];
-    return (0, _objectAssign2.default)({}, accumulator, newCookie);
-  }, {});
-}
-
-function save(name, val, opt) {
-  _rawCookie[name] = val;
-
-  // Allow you to work with cookies as objects.
-  if ((typeof val === 'undefined' ? 'undefined' : _typeof(val)) === 'object') {
-    _rawCookie[name] = JSON.stringify(val);
-  }
-
-  // Cookies only work in the browser
-  if (!IS_NODE) {
-    document.cookie = _cookie2.default.serialize(name, _rawCookie[name], opt);
-  }
-
-  if (_isResWritable() && _res.cookie) {
-    _res.cookie(name, val, opt);
-  }
-}
-
-function remove(name, opt) {
-  delete _rawCookie[name];
-
-  if (typeof opt === 'undefined') {
-    opt = {};
-  } else if (typeof opt === 'string') {
-    // Will be deprecated in future versions
-    opt = { path: opt };
-  } else {
-    // Prevent mutation of opt below
-    opt = (0, _objectAssign2.default)({}, opt);
-  }
-
-  if (typeof document !== 'undefined') {
-    opt.expires = new Date(1970, 1, 1, 0, 0, 1);
-    opt.maxAge = 0;
-    document.cookie = _cookie2.default.serialize(name, '', opt);
-  }
-
-  if (_isResWritable() && _res.clearCookie) {
-    _res.clearCookie(name, opt);
-  }
-}
-
-function setRawCookie(rawCookie) {
-  if (rawCookie) {
-    _rawCookie = _cookie2.default.parse(rawCookie);
-  } else {
-    _rawCookie = {};
-  }
-}
-
-function plugToRequest(req, res) {
-  if (req.cookie) {
-    _rawCookie = req.cookie;
-  } else if (req.cookies) {
-    _rawCookie = req.cookies;
-  } else if (req.headers && req.headers.cookie) {
-    setRawCookie(req.headers.cookie);
-  } else {
-    _rawCookie = {};
-  }
-
-  _res = res;
-
-  return function unplug() {
-    _res = null;
-    _rawCookie = {};
-  };
-}
-
-exports.default = {
-  setRawCookie: setRawCookie,
-  load: load,
-  loadAll: loadAll,
-  select: select,
-  save: save,
-  remove: remove,
-  plugToRequest: plugToRequest
-};
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 module.exports = function bind(fn, thisArg) {
@@ -1534,19 +1355,19 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(1);
-var settle = __webpack_require__(44);
-var buildURL = __webpack_require__(46);
-var parseHeaders = __webpack_require__(47);
-var isURLSameOrigin = __webpack_require__(48);
-var createError = __webpack_require__(20);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(49);
+var settle = __webpack_require__(42);
+var buildURL = __webpack_require__(44);
+var parseHeaders = __webpack_require__(45);
+var isURLSameOrigin = __webpack_require__(46);
+var createError = __webpack_require__(19);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(47);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -1643,7 +1464,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(50);
+      var cookies = __webpack_require__(48);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -1722,13 +1543,13 @@ module.exports = function xhrAdapter(config) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(45);
+var enhanceError = __webpack_require__(43);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1747,7 +1568,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1759,7 +1580,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1785,7 +1606,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1799,7 +1620,7 @@ var _reactDom = __webpack_require__(12);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = __webpack_require__(34);
+var _App = __webpack_require__(33);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -1808,7 +1629,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1837,7 +1658,7 @@ module.exports=X["default"]?X["default"]:X;
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1863,7 +1684,7 @@ var emptyObject = __webpack_require__(6);
 var invariant = __webpack_require__(5);
 var warning = __webpack_require__(7);
 var emptyFunction = __webpack_require__(3);
-var checkPropTypes = __webpack_require__(9);
+var checkPropTypes = __webpack_require__(8);
 
 // TODO: this is special because it gets imported during build.
 
@@ -3258,7 +3079,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3510,7 +3331,7 @@ ReactDOMEventListener:Zd},unstable_createRoot:function(a,b){return new sg(a,!0,n
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3525,7 +3346,7 @@ ReactDOMEventListener:Zd},unstable_createRoot:function(a,b){return new sg(a,!0,n
  * @typechecks
  */
 
-var isNode = __webpack_require__(28);
+var isNode = __webpack_require__(27);
 
 /**
  * @param {*} object The object to check.
@@ -3538,7 +3359,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3566,7 +3387,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3593,13 +3414,13 @@ var warning = __webpack_require__(7);
 var ExecutionEnvironment = __webpack_require__(13);
 var _assign = __webpack_require__(4);
 var emptyFunction = __webpack_require__(3);
-var checkPropTypes = __webpack_require__(9);
+var checkPropTypes = __webpack_require__(8);
 var getActiveElement = __webpack_require__(14);
 var shallowEqual = __webpack_require__(15);
 var containsNode = __webpack_require__(16);
 var emptyObject = __webpack_require__(6);
-var hyphenateStyleName = __webpack_require__(30);
-var camelizeStyleName = __webpack_require__(32);
+var hyphenateStyleName = __webpack_require__(29);
+var camelizeStyleName = __webpack_require__(31);
 
 /**
  * WARNING: DO NOT manually require this module.
@@ -20094,7 +19915,7 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20109,7 +19930,7 @@ module.exports = reactDom;
 
 
 
-var hyphenate = __webpack_require__(31);
+var hyphenate = __webpack_require__(30);
 
 var msPattern = /^ms-/;
 
@@ -20136,7 +19957,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20172,7 +19993,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20187,7 +20008,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(33);
+var camelize = __webpack_require__(32);
 
 var msPattern = /^-ms-/;
 
@@ -20215,7 +20036,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20250,7 +20071,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20270,21 +20091,17 @@ var _reactDom = __webpack_require__(12);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _propTypes = __webpack_require__(8);
+var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactCookies = __webpack_require__(17);
+var _helpers = __webpack_require__(36);
 
-var _reactCookies2 = _interopRequireDefault(_reactCookies);
-
-var _helpers = __webpack_require__(38);
-
-var _Header = __webpack_require__(58);
+var _Header = __webpack_require__(56);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _RefsBox = __webpack_require__(59);
+var _RefsBox = __webpack_require__(57);
 
 var _RefsBox2 = _interopRequireDefault(_RefsBox);
 
@@ -20305,8 +20122,8 @@ var App = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
-      cookies: _reactCookies2.default.loadAll(),
-      link: ''
+      link: '',
+      links: {}
     };
 
     _this.generateShortenUrl = _this.generateShortenUrl.bind(_this);
@@ -20325,21 +20142,11 @@ var App = function (_React$Component) {
     value: function generateShortenUrl(event) {
       event.preventDefault();
       var link = this.state.link;
-      var title = (0, _helpers.getTitle)(link);
-      // console.log(title)
-      var shortLink = (0, _helpers.generateShortUrl)();
-      _reactCookies2.default.remove('downTitleLink', { path: '/' });
-      _reactCookies2.default.remove('downRefLink', { path: '/' });
-      _reactCookies2.default.remove('downShortLink', { path: '/' });
-      _reactCookies2.default.save('downTitleLink', _reactCookies2.default.load('topTitleLink'), { path: '/' });
-      _reactCookies2.default.save('downRefLink', _reactCookies2.default.load('topRefLink'), { path: '/' });
-      _reactCookies2.default.save('downShortLink', _reactCookies2.default.load('topShortLink'), { path: '/' });
-      _reactCookies2.default.save('topRefLink', link, { path: '/' });
-      _reactCookies2.default.save('topShortLink', shortLink, { path: '/' });
-      _reactCookies2.default.save('topTitleLink', title, { path: '/' });
+      (0, _helpers.addLinkData)(link);
+      var links = (0, _helpers.getLinks)();
       this.setState({
         link: '',
-        cookies: _reactCookies2.default.loadAll()
+        links: links
       });
     }
   }, {
@@ -20350,9 +20157,9 @@ var App = function (_React$Component) {
         { className: 'stage' },
         _react2.default.createElement(_Header2.default, null),
         _react2.default.createElement(_RefsBox2.default, {
-          cookies: this.state.cookies,
-          onChange: this.handleChange,
+          links: this.state.links,
           link: this.state.link,
+          onChange: this.handleChange,
           onClickShorten: this.generateShortenUrl
         })
       );
@@ -20365,7 +20172,7 @@ var App = function (_React$Component) {
 exports.default = App;
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20383,8 +20190,8 @@ var invariant = __webpack_require__(5);
 var warning = __webpack_require__(7);
 var assign = __webpack_require__(4);
 
-var ReactPropTypesSecret = __webpack_require__(10);
-var checkPropTypes = __webpack_require__(9);
+var ReactPropTypesSecret = __webpack_require__(9);
+var checkPropTypes = __webpack_require__(8);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -20915,7 +20722,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20930,7 +20737,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 var emptyFunction = __webpack_require__(3);
 var invariant = __webpack_require__(5);
-var ReactPropTypesSecret = __webpack_require__(10);
+var ReactPropTypesSecret = __webpack_require__(9);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -20980,209 +20787,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*!
- * cookie
- * Copyright(c) 2012-2014 Roman Shtylman
- * Copyright(c) 2015 Douglas Christopher Wilson
- * MIT Licensed
- */
-
-
-
-/**
- * Module exports.
- * @public
- */
-
-exports.parse = parse;
-exports.serialize = serialize;
-
-/**
- * Module variables.
- * @private
- */
-
-var decode = decodeURIComponent;
-var encode = encodeURIComponent;
-var pairSplitRegExp = /; */;
-
-/**
- * RegExp to match field-content in RFC 7230 sec 3.2
- *
- * field-content = field-vchar [ 1*( SP / HTAB ) field-vchar ]
- * field-vchar   = VCHAR / obs-text
- * obs-text      = %x80-FF
- */
-
-var fieldContentRegExp = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/;
-
-/**
- * Parse a cookie header.
- *
- * Parse the given cookie header string into an object
- * The object has the various cookies as keys(names) => values
- *
- * @param {string} str
- * @param {object} [options]
- * @return {object}
- * @public
- */
-
-function parse(str, options) {
-  if (typeof str !== 'string') {
-    throw new TypeError('argument str must be a string');
-  }
-
-  var obj = {}
-  var opt = options || {};
-  var pairs = str.split(pairSplitRegExp);
-  var dec = opt.decode || decode;
-
-  for (var i = 0; i < pairs.length; i++) {
-    var pair = pairs[i];
-    var eq_idx = pair.indexOf('=');
-
-    // skip things that don't look like key=value
-    if (eq_idx < 0) {
-      continue;
-    }
-
-    var key = pair.substr(0, eq_idx).trim()
-    var val = pair.substr(++eq_idx, pair.length).trim();
-
-    // quoted values
-    if ('"' == val[0]) {
-      val = val.slice(1, -1);
-    }
-
-    // only assign once
-    if (undefined == obj[key]) {
-      obj[key] = tryDecode(val, dec);
-    }
-  }
-
-  return obj;
-}
-
-/**
- * Serialize data into a cookie header.
- *
- * Serialize the a name value pair into a cookie string suitable for
- * http headers. An optional options object specified cookie parameters.
- *
- * serialize('foo', 'bar', { httpOnly: true })
- *   => "foo=bar; httpOnly"
- *
- * @param {string} name
- * @param {string} val
- * @param {object} [options]
- * @return {string}
- * @public
- */
-
-function serialize(name, val, options) {
-  var opt = options || {};
-  var enc = opt.encode || encode;
-
-  if (typeof enc !== 'function') {
-    throw new TypeError('option encode is invalid');
-  }
-
-  if (!fieldContentRegExp.test(name)) {
-    throw new TypeError('argument name is invalid');
-  }
-
-  var value = enc(val);
-
-  if (value && !fieldContentRegExp.test(value)) {
-    throw new TypeError('argument val is invalid');
-  }
-
-  var str = name + '=' + value;
-
-  if (null != opt.maxAge) {
-    var maxAge = opt.maxAge - 0;
-    if (isNaN(maxAge)) throw new Error('maxAge should be a Number');
-    str += '; Max-Age=' + Math.floor(maxAge);
-  }
-
-  if (opt.domain) {
-    if (!fieldContentRegExp.test(opt.domain)) {
-      throw new TypeError('option domain is invalid');
-    }
-
-    str += '; Domain=' + opt.domain;
-  }
-
-  if (opt.path) {
-    if (!fieldContentRegExp.test(opt.path)) {
-      throw new TypeError('option path is invalid');
-    }
-
-    str += '; Path=' + opt.path;
-  }
-
-  if (opt.expires) {
-    if (typeof opt.expires.toUTCString !== 'function') {
-      throw new TypeError('option expires is invalid');
-    }
-
-    str += '; Expires=' + opt.expires.toUTCString();
-  }
-
-  if (opt.httpOnly) {
-    str += '; HttpOnly';
-  }
-
-  if (opt.secure) {
-    str += '; Secure';
-  }
-
-  if (opt.sameSite) {
-    var sameSite = typeof opt.sameSite === 'string'
-      ? opt.sameSite.toLowerCase() : opt.sameSite;
-
-    switch (sameSite) {
-      case true:
-        str += '; SameSite=Strict';
-        break;
-      case 'lax':
-        str += '; SameSite=Lax';
-        break;
-      case 'strict':
-        str += '; SameSite=Strict';
-        break;
-      default:
-        throw new TypeError('option sameSite is invalid');
-    }
-  }
-
-  return str;
-}
-
-/**
- * Try decoding a string using a decoding function.
- *
- * @param {string} str
- * @param {function} decode
- * @private
- */
-
-function tryDecode(str, decode) {
-  try {
-    return decode(str);
-  } catch (e) {
-    return str;
-  }
-}
-
-
-/***/ }),
-/* 38 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21191,15 +20796,27 @@ function tryDecode(str, decode) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var axios = __webpack_require__(39);
+var axios = __webpack_require__(37);
 
-var getTitle = exports.getTitle = function getTitle(url) {
-  axios.get('/getlink', { params: { link: url } }).then(function (res) {
-    return res.data;
-  }).then(function (data) {
-    return data;
-  }).catch(function (error) {
-    console.error(error);
+var addLinkData = exports.addLinkData = function addLinkData(url) {
+  return axios.post('/api/links', { params: { link: url } });
+};
+
+var getLinks = exports.getLinks = function getLinks() {
+  var links = {};
+  axios.get('/api/links').then(function (res) {
+    links = res.data;
+  }).catch(function (err) {
+    return err;
+  });
+  return links;
+};
+
+var getOriginalLink = exports.getOriginalLink = function getOriginalLink(url) {
+  axios.get('/api/links/' + url).then(function (res) {
+    return console.log(res.data);
+  }).catch(function (err) {
+    return err;
   });
 };
 
@@ -21216,25 +20833,25 @@ var generateLinkHash = function generateLinkHash() {
 };
 
 var generateShortUrl = exports.generateShortUrl = function generateShortUrl() {
-  return 'http://bit.ref/' + generateLinkHash();
+  return generateLinkHash();
 };
 
 /***/ }),
-/* 39 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(40);
+module.exports = __webpack_require__(38);
 
 /***/ }),
-/* 40 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(1);
-var bind = __webpack_require__(18);
-var Axios = __webpack_require__(42);
+var bind = __webpack_require__(17);
+var Axios = __webpack_require__(40);
 var defaults = __webpack_require__(11);
 
 /**
@@ -21268,15 +20885,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(22);
-axios.CancelToken = __webpack_require__(56);
-axios.isCancel = __webpack_require__(21);
+axios.Cancel = __webpack_require__(21);
+axios.CancelToken = __webpack_require__(54);
+axios.isCancel = __webpack_require__(20);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(57);
+axios.spread = __webpack_require__(55);
 
 module.exports = axios;
 
@@ -21285,7 +20902,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 41 */
+/* 39 */
 /***/ (function(module, exports) {
 
 /*!
@@ -21312,7 +20929,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 42 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21320,8 +20937,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(11);
 var utils = __webpack_require__(1);
-var InterceptorManager = __webpack_require__(51);
-var dispatchRequest = __webpack_require__(52);
+var InterceptorManager = __webpack_require__(49);
+var dispatchRequest = __webpack_require__(50);
 
 /**
  * Create a new instance of Axios
@@ -21398,7 +21015,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 43 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21417,13 +21034,13 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 44 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(20);
+var createError = __webpack_require__(19);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -21450,7 +21067,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 45 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21478,7 +21095,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 46 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21551,7 +21168,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 47 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21611,7 +21228,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 48 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21686,7 +21303,7 @@ module.exports = (
 
 
 /***/ }),
-/* 49 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21729,7 +21346,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 50 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21789,7 +21406,7 @@ module.exports = (
 
 
 /***/ }),
-/* 51 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21848,18 +21465,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 52 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(1);
-var transformData = __webpack_require__(53);
-var isCancel = __webpack_require__(21);
+var transformData = __webpack_require__(51);
+var isCancel = __webpack_require__(20);
 var defaults = __webpack_require__(11);
-var isAbsoluteURL = __webpack_require__(54);
-var combineURLs = __webpack_require__(55);
+var isAbsoluteURL = __webpack_require__(52);
+var combineURLs = __webpack_require__(53);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -21941,7 +21558,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 53 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21968,7 +21585,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 54 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21989,7 +21606,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 55 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22010,13 +21627,13 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 56 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(22);
+var Cancel = __webpack_require__(21);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -22074,7 +21691,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 57 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22108,7 +21725,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 58 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22218,7 +21835,7 @@ function Header() {
 exports.default = Header;
 
 /***/ }),
-/* 59 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22233,17 +21850,17 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactCookies = __webpack_require__(17);
-
-var _reactCookies2 = _interopRequireDefault(_reactCookies);
-
-var _propTypes = __webpack_require__(8);
+var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _RefsList = __webpack_require__(60);
+var _RefsItem = __webpack_require__(58);
 
-var _RefsList2 = _interopRequireDefault(_RefsList);
+var _RefsItem2 = _interopRequireDefault(_RefsItem);
+
+var _SignupPromotion = __webpack_require__(59);
+
+var _SignupPromotion2 = _interopRequireDefault(_SignupPromotion);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -22290,20 +21907,30 @@ function RefsBox(props) {
         ),
         _react2.default.createElement('div', { id: 'shorten_actions' })
       ),
-      _react2.default.createElement(_RefsList2.default, { cookies: props.cookies })
+      _react2.default.createElement(
+        'div',
+        { className: 'link-container mid-container' },
+        props.links.map(function (link) {
+          return _react2.default.createElement(_RefsItem2.default, {
+            shortLink: Object.keys(link)[0],
+            title: link[Object.keys(link)[0]][1],
+            refLink: link[Object.keys(link)[0]][0]
+          });
+        })
+      )
     )
   );
 }
 
 RefsBox.propTypes = {
-  cookies: _propTypes2.default.object,
+  links: _propTypes2.default.object,
   link: _propTypes2.default.string,
   onChange: _propTypes2.default.func.isRequired,
   onClickShorten: _propTypes2.default.func.isRequired
 };
 
 /***/ }),
-/* 60 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -22317,66 +21944,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(8);
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _RefsItem = __webpack_require__(61);
-
-var _RefsItem2 = _interopRequireDefault(_RefsItem);
-
-var _SignupPromotion = __webpack_require__(62);
-
-var _SignupPromotion2 = _interopRequireDefault(_SignupPromotion);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// eslint-disable-line no-unused-vars
-
-function RefsList(props) {
-  var cookies = props.cookies;
-
-  return _react2.default.createElement(
-    'div',
-    { className: 'link-container mid-container' },
-    _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'ul',
-        { id: 'anon_history', className: 'anon_history' },
-        _react2.default.createElement(_RefsItem2.default, { title: cookies.topTitleLink, refLink: cookies.topRefLink, shortLink: cookies.topShortLink }),
-        _react2.default.createElement(_SignupPromotion2.default, null),
-        _react2.default.createElement(_RefsItem2.default, { title: cookies.downTitleLink, refLink: cookies.downRefLink, shortLink: cookies.downShortLink })
-      )
-    )
-  );
-} // eslint-disable-line no-unused-vars
-// eslint-disable-line no-unused-vars
-
-
-RefsList.propTypes = {
-  cookies: _propTypes2.default.object
-};
-
-exports.default = RefsList;
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(2);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = __webpack_require__(8);
+var _propTypes = __webpack_require__(10);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
@@ -22384,7 +21952,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function RefsItem(props) {
   return _react2.default.createElement(
-    'li',
+    'div',
     {
       id: props.itemId,
       className: 'shortened_link list_item',
@@ -22420,7 +21988,7 @@ function RefsItem(props) {
       _react2.default.createElement('input', { className: 'copy-input', defaultValue: 'short url' }),
       _react2.default.createElement(
         'a',
-        { href: props.shortLink, className: 'copy button primary' },
+        { href: props.refLink, className: 'copy button primary' },
         'Copy'
       ),
       _react2.default.createElement(
@@ -22444,7 +22012,7 @@ RefsItem.propTypes = {
 exports.default = RefsItem;
 
 /***/ }),
-/* 62 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

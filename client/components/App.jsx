@@ -1,9 +1,8 @@
-import React from 'react' 
+import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import cookie from 'react-cookies'
 
-import {getTitle, generateShortUrl} from '../../common/helpers'
+import {addLinkData, getLinks} from '../../common/helpers'
 import Header from './Header'
 import RefsBox from './RefsBox'
 
@@ -11,8 +10,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      cookies: cookie.loadAll(),
-      link: ''
+      link: '',
+      links: {}
     }
 
     this.generateShortenUrl = this.generateShortenUrl.bind(this)
@@ -27,31 +26,21 @@ export default class App extends React.Component {
   generateShortenUrl(event) {
     event.preventDefault()
     const link = this.state.link
-    const title = getTitle(link)
-    // console.log(title)
-    const shortLink = generateShortUrl()
-    cookie.remove('downTitleLink', {path: '/'})
-    cookie.remove('downRefLink', {path: '/'})
-    cookie.remove('downShortLink', {path: '/'})
-    cookie.save('downTitleLink', cookie.load('topTitleLink'), {path: '/'})
-    cookie.save('downRefLink', cookie.load('topRefLink'), {path: '/'})
-    cookie.save('downShortLink', cookie.load('topShortLink'), {path: '/'})
-    cookie.save('topRefLink', link, {path: '/'})
-    cookie.save('topShortLink', shortLink, {path: '/'})
-    cookie.save('topTitleLink', title, {path: '/'})
+    addLinkData(link)
+    let links = getLinks()
     this.setState({
       link: '',
-      cookies: cookie.loadAll()
+      links
     })
   }
 
   render() {
     return <div className="stage">
       <Header />
-      <RefsBox 
-        cookies={this.state.cookies}
-        onChange={this.handleChange}
+      <RefsBox
+        links={this.state.links}
         link={this.state.link}
+        onChange={this.handleChange}
         onClickShorten={this.generateShortenUrl}
       />
   </div>

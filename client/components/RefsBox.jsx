@@ -1,8 +1,8 @@
 import React from 'react'
-import cookie from 'react-cookies'
 import PropTypes from 'prop-types'
 
-import RefsList from './RefsList'
+import RefsItem from './RefsItem'
+import SignupPromotion from './SignupPromotion'
 
 export default function RefsBox(props) {
   return <div id="container" className="clearfix">
@@ -22,24 +22,32 @@ export default function RefsBox(props) {
             type="text"
             onChange={props.onChange}
           />
-          <input 
+          <input
             id="shorten_btn"
             className="button-ref"
             value="Shorten"
             readOnly
             type="submit"
-            onClick={props.onClickShorten} 
+            onClick={props.onClickShorten}
           />
         </form>
         <div id="shorten_actions"></div>
       </div>
-      <RefsList cookies={props.cookies}/>
+      <div className="link-container mid-container">
+        {props.links.map(link => <RefsItem
+            shortLink={Object.keys(link)[0]}
+            title={link[Object.keys(link)[0]][1]}
+            refLink={link[Object.keys(link)[0]][0]}
+          />
+        )
+      }
+      </div>
     </div>
   </div>
 }
 
 RefsBox.propTypes = {
-  cookies: PropTypes.object,
+  links: PropTypes.object,
   link: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onClickShorten: PropTypes.func.isRequired

@@ -1,16 +1,28 @@
 const axios = require('axios')
+import qs from 'qs'
 
-export const addLinkData = (url) => axios.post('/api/links', {params: {link: url}})
+export const addLinkData = (url) => {
+  let promise = new Promise((resolve, reject) => {
+    const options = {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      data: JSON.stringify({'url': url})
+    }
+    axios('/api/addlink', options)
+  })
+  return promise
+}
 
 export const getLinks = () => {
-  let links = {}
-  axios.get('/api/links')
-    .then(res => {
-      links = res.data
-    })
-    .catch(err => err)
-  return links
+  return axios.get('/api/links')
+    .then(res => res.data)
+    .catch(error => error)
 }
+
+  // axios.get('/api/links')
+  //   .then(res => res.data)
+  //   .catch(err => err)
+
 
 export const getOriginalLink = (url) => {
   axios.get(`/api/links/${url}`)

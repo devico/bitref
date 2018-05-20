@@ -9,7 +9,7 @@ export default function RefsBox(props) {
     <div className="shorten-container">
       <h1 className="page-title">HARNESS EVERY CLICK, TAP AND SWIPE.</h1>
       <div className="join-bitref">
-        Brand, track and optimize every touchpoint with Bitly, the world's leading link management platform.
+        <p>Brand, track and optimize every touchpoint with Bitly, the world's leading link management platform.</p>
       </div>
       <div id="form_container" className="form-container">
         <form id="unAuthShortenForm">
@@ -25,21 +25,20 @@ export default function RefsBox(props) {
           <input
             id="shorten_btn"
             className="button-ref"
-            value="Shorten"
-            readOnly
             type="submit"
+            value="Shorten"
             onClick={props.onClickShorten}
           />
         </form>
         <div id="shorten_actions"></div>
       </div>
       <div className="link-container mid-container">
-        {props.links.map(link => <RefsItem
-            shortLink={Object.keys(link)[0]}
-            title={link[Object.keys(link)[0]][1]}
-            refLink={link[Object.keys(link)[0]][0]}
-          />
-        )
+        {Object.keys(props.links).map((key, value) => <RefsItem
+          itemId={key}
+          shortLink={`http://bit.ref/${key}`}
+          title={value[1]}
+          refLink={value[0]}
+        />)
       }
       </div>
     </div>

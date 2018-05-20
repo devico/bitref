@@ -2,25 +2,26 @@ import React from 'react' // eslint-disable-line no-unused-vars
 import PT from 'prop-types'
 
 function RefsItem(props) {
+  const { itemId, shortLink, title, refLink } = props
   return <div
-           id={props.itemId}
-           className="shortened_link list_item"
-           data-user_hash={props.itemId}
-           data-short_link={props.shortLink}
-         >
-            <div className="unauth-title">
-              <a className="article-title" href={props.refLink}>{props.title}</a>
-            </div>
-            <div className="unauth-title-url">
-              <a className="article-title smaller" href={props.refLink}>{props.refLink}</a>
-            </div>
-            <div className="unauth_capsule clearfix">
-              <a className="short-url" href={props.shortLink}>{props.shortLink}</a>
-              <input className="copy-input" defaultValue="short url" />
-              <a href={props.refLink} className="copy button primary">Copy</a>
-              <a className="info_page" href={props.shortLink}><i className="default fa fa-bar-chart-o"></i> 0</a>
-            </div>
-          </div>
+    id={props.itemId}
+    className="shortened_link list_item"
+    data-user_hash={itemId}
+    data-short_link={shortLink}
+  >
+    <div className="unauth-title">
+      <a className="article-title" href={refLink}>{title}</a>
+    </div>
+    <div className="unauth-title-url">
+      <a className="article-title smaller" href={refLink}>{refLink}</a>
+    </div>
+    <div className="unauth_capsule clearfix">
+      <a className="short-url" href={shortLink}>{shortLink}</a>
+      <input className="copy-input" defaultValue="short url" />
+      <a href={refLink} className="copy button primary">Copy</a>
+      <a className="info_page" href={shortLink}><i className="default fa fa-bar-chart-o"></i> 0</a>
+    </div>
+  </div>
 }
 
 RefsItem.propTypes = {

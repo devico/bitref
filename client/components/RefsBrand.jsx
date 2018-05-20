@@ -5,7 +5,7 @@ export default function RefsBrand() {
     <div class="container container-pod container-pod-tall overview">
       <div class="mid-container t-center">
         <h2 class="flush-top main-header">Unleash The Power of The Link</h2>
-          <p class="main-subheader">
+        <p class="main-subheader">
           The link is the invisible thread that connects every customer interaction to tell a greater story. Drive seamless experiences across every channel and every device with Bitly Enterprise.
           </p>
       </div>
@@ -22,12 +22,11 @@ export default function RefsBrand() {
           </div>
           <p></p>
         </div>
-        
         <div class="page-shorten-brand-tools-product col-spill">
           <i class="main-icon main-icon-measure"></i>
           <h3 class="short">Track</h3>
           <p class="flush-bottom">
-          Track individual link analytics and measure campaign performance across teams and channels, all in one location. All in real-time.
+            Track individual link analytics and measure campaign performance across teams and channels, all in one location. All in real-time.
           </p>
           <div>
             <a href="https://bitly.com/pages/enterprise#track" class="smooth-scroll">Learn More <i class="orange-arrow-small"></i></a>
@@ -39,7 +38,7 @@ export default function RefsBrand() {
           <i class="main-icon main-icon-share"></i>
           <h3 class="short">Optimize</h3>
           <p class="flush-bottom">
-          Whether you’re at customer number one or 1,000,001, the link gives each user the right experience at the right time.
+            Whether you’re at customer number one or 1,000,001, the link gives each user the right experience at the right time.
           </p>
           <div>
             <a href="https://bitly.com/pages/enterprise#optimize" class="smooth-scroll">Learn More <i class="orange-arrow-small"></i></a>

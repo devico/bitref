@@ -2,15 +2,11 @@ const axios = require('axios')
 import qs from 'qs'
 
 export const addLinkData = (url) => {
-  let promise = new Promise((resolve, reject) => {
-    const options = {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      data: JSON.stringify({'url': url})
-    }
-    axios('/api/addlink', options)
+  return axios('/api/addlink', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    data: JSON.stringify({'url': url})
   })
-  return promise
 }
 
 export const getLinks = () => {

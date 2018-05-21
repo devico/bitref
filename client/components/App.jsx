@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      link: "",
+      linkInput: '',
       linkTop: {},
       linkBottom: {}
     }
@@ -20,21 +20,22 @@ export default class App extends React.Component {
   }
 
   handleChange(event) {
-    const link = event.target.value;
-    this.setState({ link })
+    const linkInput = event.target.value;
+    this.setState({ linkInput })
   }
 
   generateShortenUrl(event) {
     event.preventDefault()
-    const link = this.state.link
-    addLinkData(link);
-    getLinks().then(links => {
-      this.setState({
-        link: "",
-        linkBottom: this.state.linkTop,
-        linkTop: links[links.length - 1]
+    const link = this.state.linkInput
+    addLinkData(link)
+      .then(() => getLinks())
+      .then(links => {
+        this.setState({
+          linkInput: '',
+          linkBottom: this.state.linkTop,
+          linkTop: Object.keys(links).map(k => ({[k]: links[k]}))[Object.keys(links).length - 1]
+        })
       })
-    })
   }
 
   render() {
@@ -44,7 +45,7 @@ export default class App extends React.Component {
         <RefsBox
           linkTop={this.state.linkTop}
           linkBottom={this.state.linkBottom}
-          link={this.state.link}
+          linkInput={this.state.linkInput}
           onChange={this.handleChange}
           onClickShorten={this.generateShortenUrl}
         />

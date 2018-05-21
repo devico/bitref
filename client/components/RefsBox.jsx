@@ -5,7 +5,7 @@ import RefsItem from './RefsItem'
 import SignupPromotion from './SignupPromotion'
 
 export default function RefsBox(props) {
-  let {linkTop, linkBottom, link} = props
+  let {linkTop, linkBottom, linkInput} = props
   return <div id="container" className="clearfix">
     <div className="shorten-container">
       <h1 className="page-title">HARNESS EVERY CLICK, TAP AND SWIPE.</h1>
@@ -19,7 +19,7 @@ export default function RefsBox(props) {
             name="url"
             className="shorten-input"
             placeholder="Paste a link to shorten it"
-            value={link}
+            value={linkInput}
             type="text"
             onChange={props.onChange}
           />
@@ -40,8 +40,8 @@ export default function RefsBox(props) {
               <RefsItem
                 itemId={Object.keys(linkTop)}
                 shortLink={`http://bit.ref/${Object.keys(linkTop)}`}
-                title={linkTop[Object.keys(linkTop)]}
-                refLink={linkTop[Object.keys(linkTop)]}
+                title={linkTop[Object.keys(linkTop)][1]}
+                refLink={linkTop[Object.keys(linkTop)][0]}
               />
               <SignupPromotion />
             </div>
@@ -53,8 +53,8 @@ export default function RefsBox(props) {
             <RefsItem
               itemId={Object.keys(linkBottom)}
               shortLink={`http://bit.ref/${Object.keys(linkBottom)}`}
-              title={linkBottom[Object.keys(linkBottom)]}
-              refLink={linkBottom[Object.keys(linkBottom)]}
+              title={linkBottom[Object.keys(linkBottom)][1]}
+              refLink={linkBottom[Object.keys(linkBottom)][0]}
             />
           :
             <div></div>
@@ -67,7 +67,7 @@ export default function RefsBox(props) {
 RefsBox.propTypes = {
   linkTop: PropTypes.object,
   linkBottom: PropTypes.object,
-  link: PropTypes.string,
+  linkInput: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onClickShorten: PropTypes.func.isRequired
 }

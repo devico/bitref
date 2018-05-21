@@ -7,15 +7,9 @@ const querystring = require('querystring')
 
 import {generateShortUrl} from '../common/helpers'
 
-const app = express();
+const app = express()
 
 let links = {}
-
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*')
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-//   next()
-// })
 
 app.use("/", express.static(path.join(__dirname, "../public")))
 
@@ -44,13 +38,7 @@ app.post("/api/addlink", (req, res) => {
 
 app.get("/api/links", (req, res) => {
   res.setHeader('Content-Type', 'application/json')
-  // res.send(links)
   res.send(JSON.stringify(links, null, 2))
-  //res.send('hello world');
-  // res.writeHead(200, {'Content-Type': 'application/json'})
-  // res.send('links')
-  // res.json(links)
-  // res.status(200).json(links)
 })
 
 app.get("/api/links/:shortLink", (req, res) => {

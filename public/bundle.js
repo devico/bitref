@@ -20341,6 +20341,8 @@ var _RefsBox2 = _interopRequireDefault(_RefsBox);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -20356,7 +20358,7 @@ var App = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
-      link: "",
+      linkInput: '',
       linkTop: {},
       linkBottom: {}
     };
@@ -20369,8 +20371,8 @@ var App = function (_React$Component) {
   _createClass(App, [{
     key: "handleChange",
     value: function handleChange(event) {
-      var link = event.target.value;
-      this.setState({ link: link });
+      var linkInput = event.target.value;
+      this.setState({ linkInput: linkInput });
     }
   }, {
     key: "generateShortenUrl",
@@ -20378,13 +20380,16 @@ var App = function (_React$Component) {
       var _this2 = this;
 
       event.preventDefault();
-      var link = this.state.link;
-      (0, _helpers.addLinkData)(link);
-      (0, _helpers.getLinks)().then(function (links) {
+      var link = this.state.linkInput;
+      (0, _helpers.addLinkData)(link).then(function () {
+        return (0, _helpers.getLinks)();
+      }).then(function (links) {
         _this2.setState({
-          link: "",
+          linkInput: '',
           linkBottom: _this2.state.linkTop,
-          linkTop: links[links.length - 1]
+          linkTop: Object.keys(links).map(function (k) {
+            return _defineProperty({}, k, links[k]);
+          })[Object.keys(links).length - 1]
         });
       });
     }
@@ -20398,7 +20403,7 @@ var App = function (_React$Component) {
         _react2.default.createElement(_RefsBox2.default, {
           linkTop: this.state.linkTop,
           linkBottom: this.state.linkBottom,
-          link: this.state.link,
+          linkInput: this.state.linkInput,
           onChange: this.handleChange,
           onClickShorten: this.generateShortenUrl
         })
@@ -21046,15 +21051,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var axios = __webpack_require__(42);
 var addLinkData = exports.addLinkData = function addLinkData(url) {
-  var promise = new Promise(function (resolve, reject) {
-    var options = {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      data: JSON.stringify({ 'url': url })
-    };
-    axios('/api/addlink', options);
+  return axios('/api/addlink', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    data: JSON.stringify({ 'url': url })
   });
-  return promise;
 };
 
 var getLinks = exports.getLinks = function getLinks() {
@@ -22536,7 +22537,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function RefsBox(props) {
   var linkTop = props.linkTop,
       linkBottom = props.linkBottom,
-      link = props.link;
+      linkInput = props.linkInput;
 
   return _react2.default.createElement(
     'div',
@@ -22569,7 +22570,7 @@ function RefsBox(props) {
             name: 'url',
             className: 'shorten-input',
             placeholder: 'Paste a link to shorten it',
-            value: link,
+            value: linkInput,
             type: 'text',
             onChange: props.onChange
           }),
@@ -22592,16 +22593,16 @@ function RefsBox(props) {
           _react2.default.createElement(_RefsItem2.default, {
             itemId: Object.keys(linkTop),
             shortLink: 'http://bit.ref/' + Object.keys(linkTop),
-            title: linkTop[Object.keys(linkTop)],
-            refLink: linkTop[Object.keys(linkTop)]
+            title: linkTop[Object.keys(linkTop)][1],
+            refLink: linkTop[Object.keys(linkTop)][0]
           }),
           _react2.default.createElement(_SignupPromotion2.default, null)
         ) : _react2.default.createElement('div', null),
         Object.keys(linkBottom).length > 0 ? _react2.default.createElement(_RefsItem2.default, {
           itemId: Object.keys(linkBottom),
           shortLink: 'http://bit.ref/' + Object.keys(linkBottom),
-          title: linkBottom[Object.keys(linkBottom)],
-          refLink: linkBottom[Object.keys(linkBottom)]
+          title: linkBottom[Object.keys(linkBottom)][1],
+          refLink: linkBottom[Object.keys(linkBottom)][0]
         }) : _react2.default.createElement('div', null)
       )
     )
@@ -22611,7 +22612,7 @@ function RefsBox(props) {
 RefsBox.propTypes = {
   linkTop: _propTypes2.default.object,
   linkBottom: _propTypes2.default.object,
-  link: _propTypes2.default.string,
+  linkInput: _propTypes2.default.string,
   onChange: _propTypes2.default.func.isRequired,
   onClickShorten: _propTypes2.default.func.isRequired
 };
@@ -22646,9 +22647,9 @@ function RefsItem(props) {
   return _react2.default.createElement(
     'div',
     {
-      id: props.itemId,
+      id: itemId[0],
       className: 'shortened_link list_item',
-      'data-user_hash': itemId,
+      'data-user_hash': itemId[0],
       'data-short_link': shortLink
     },
     _react2.default.createElement(
@@ -22674,7 +22675,7 @@ function RefsItem(props) {
       { className: 'unauth_capsule clearfix' },
       _react2.default.createElement(
         'a',
-        { className: 'short-url', href: shortLink },
+        { className: 'short-url', href: refLink },
         shortLink
       ),
       _react2.default.createElement('input', { className: 'copy-input', defaultValue: 'short url' }),
@@ -22695,7 +22696,7 @@ function RefsItem(props) {
 
 
 RefsItem.propTypes = {
-  itemId: _propTypes2.default.string,
+  itemId: _propTypes2.default.array,
   shortLink: _propTypes2.default.string,
   title: _propTypes2.default.string,
   refLink: _propTypes2.default.string

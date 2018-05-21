@@ -19,11 +19,6 @@ export const getLinks = () => {
     .catch(error => error)
 }
 
-  // axios.get('/api/links')
-  //   .then(res => res.data)
-  //   .catch(err => err)
-
-
 export const getOriginalLink = (url) => {
   axios.get(`/api/links/${url}`)
            .then(res => console.log(res.data))
@@ -38,7 +33,7 @@ let generateLinkHash = () => {
   return range(0, 1)
     .map(() => {
       return Math.random().toString(16).slice(-7)
-    }).join('-');
+    }).join('-')
 }
 
 export const generateShortUrl = () => {

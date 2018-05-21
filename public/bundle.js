@@ -20357,7 +20357,8 @@ var App = function (_React$Component) {
 
     _this.state = {
       link: "",
-      links: {}
+      linkTop: {},
+      linkBottom: {}
     };
 
     _this.generateShortenUrl = _this.generateShortenUrl.bind(_this);
@@ -20382,7 +20383,8 @@ var App = function (_React$Component) {
       (0, _helpers.getLinks)().then(function (links) {
         _this2.setState({
           link: "",
-          links: links
+          linkBottom: _this2.state.linkTop,
+          linkTop: links[links.length - 1]
         });
       });
     }
@@ -20394,7 +20396,8 @@ var App = function (_React$Component) {
         { className: "stage" },
         _react2.default.createElement(_Header2.default, null),
         _react2.default.createElement(_RefsBox2.default, {
-          links: this.state.links,
+          linkTop: this.state.linkTop,
+          linkBottom: this.state.linkBottom,
           link: this.state.link,
           onChange: this.handleChange,
           onClickShorten: this.generateShortenUrl
@@ -21061,11 +21064,6 @@ var getLinks = exports.getLinks = function getLinks() {
     return error;
   });
 };
-
-// axios.get('/api/links')
-//   .then(res => res.data)
-//   .catch(err => err)
-
 
 var getOriginalLink = exports.getOriginalLink = function getOriginalLink(url) {
   axios.get('/api/links/' + url).then(function (res) {
@@ -22536,6 +22534,10 @@ var _SignupPromotion2 = _interopRequireDefault(_SignupPromotion);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function RefsBox(props) {
+  var linkTop = props.linkTop,
+      linkBottom = props.linkBottom,
+      link = props.link;
+
   return _react2.default.createElement(
     'div',
     { id: 'container', className: 'clearfix' },
@@ -22567,7 +22569,7 @@ function RefsBox(props) {
             name: 'url',
             className: 'shorten-input',
             placeholder: 'Paste a link to shorten it',
-            value: props.link,
+            value: link,
             type: 'text',
             onChange: props.onChange
           }),
@@ -22584,21 +22586,31 @@ function RefsBox(props) {
       _react2.default.createElement(
         'div',
         { className: 'link-container mid-container' },
-        Object.keys(props.links).map(function (key, value) {
-          return _react2.default.createElement(_RefsItem2.default, {
-            itemId: key,
-            shortLink: 'http://bit.ref/' + key,
-            title: value[1],
-            refLink: value[0]
-          });
-        })
+        Object.keys(linkTop).length > 0 ? _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_RefsItem2.default, {
+            itemId: Object.keys(linkTop),
+            shortLink: 'http://bit.ref/' + Object.keys(linkTop),
+            title: linkTop[Object.keys(linkTop)],
+            refLink: linkTop[Object.keys(linkTop)]
+          }),
+          _react2.default.createElement(_SignupPromotion2.default, null)
+        ) : _react2.default.createElement('div', null),
+        Object.keys(linkBottom).length > 0 ? _react2.default.createElement(_RefsItem2.default, {
+          itemId: Object.keys(linkBottom),
+          shortLink: 'http://bit.ref/' + Object.keys(linkBottom),
+          title: linkBottom[Object.keys(linkBottom)],
+          refLink: linkBottom[Object.keys(linkBottom)]
+        }) : _react2.default.createElement('div', null)
       )
     )
   );
 }
 
 RefsBox.propTypes = {
-  links: _propTypes2.default.object,
+  linkTop: _propTypes2.default.object,
+  linkBottom: _propTypes2.default.object,
   link: _propTypes2.default.string,
   onChange: _propTypes2.default.func.isRequired,
   onClickShorten: _propTypes2.default.func.isRequired

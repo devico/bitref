@@ -5,6 +5,7 @@ import RefsItem from './RefsItem'
 import SignupPromotion from './SignupPromotion'
 
 export default function RefsBox(props) {
+  let {linkTop, linkBottom, link} = props
   return <div id="container" className="clearfix">
     <div className="shorten-container">
       <h1 className="page-title">HARNESS EVERY CLICK, TAP AND SWIPE.</h1>
@@ -18,7 +19,7 @@ export default function RefsBox(props) {
             name="url"
             className="shorten-input"
             placeholder="Paste a link to shorten it"
-            value={props.link}
+            value={link}
             type="text"
             onChange={props.onChange}
           />
@@ -33,20 +34,39 @@ export default function RefsBox(props) {
         <div id="shorten_actions"></div>
       </div>
       <div className="link-container mid-container">
-        {Object.keys(props.links).map((key, value) => <RefsItem
-          itemId={key}
-          shortLink={`http://bit.ref/${key}`}
-          title={value[1]}
-          refLink={value[0]}
-        />)
-      }
+        { Object.keys(linkTop).length > 0
+          ?
+            <div>
+              <RefsItem
+                itemId={Object.keys(linkTop)}
+                shortLink={`http://bit.ref/${Object.keys(linkTop)}`}
+                title={linkTop[Object.keys(linkTop)]}
+                refLink={linkTop[Object.keys(linkTop)]}
+              />
+              <SignupPromotion />
+            </div>
+          :
+            <div></div>
+        }
+        { Object.keys(linkBottom).length > 0
+          ?
+            <RefsItem
+              itemId={Object.keys(linkBottom)}
+              shortLink={`http://bit.ref/${Object.keys(linkBottom)}`}
+              title={linkBottom[Object.keys(linkBottom)]}
+              refLink={linkBottom[Object.keys(linkBottom)]}
+            />
+          :
+            <div></div>
+        }
       </div>
     </div>
   </div>
 }
 
 RefsBox.propTypes = {
-  links: PropTypes.object,
+  linkTop: PropTypes.object,
+  linkBottom: PropTypes.object,
   link: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onClickShorten: PropTypes.func.isRequired

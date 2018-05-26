@@ -38,10 +38,10 @@ export default function RefsBox(props) {
           ?
             <div>
               <RefsItem
-                itemId={Object.keys(linkTop)}
-                shortLink={`http://bit.ref/${Object.keys(linkTop)}`}
-                title={linkTop[Object.keys(linkTop)][1]}
-                refLink={linkTop[Object.keys(linkTop)][0]}
+                itemId={linkTop.shortLink}
+                shortLink={`http://bit.ref/${linkTop.shortLink}`}
+                title={linkTop.titleLink}
+                refLink={linkTop.sourceLink}
               />
               <SignupPromotion />
             </div>
@@ -51,10 +51,10 @@ export default function RefsBox(props) {
         { Object.keys(linkBottom).length > 0
           ?
             <RefsItem
-              itemId={Object.keys(linkBottom)}
-              shortLink={`http://bit.ref/${Object.keys(linkBottom)}`}
-              title={linkBottom[Object.keys(linkBottom)][1]}
-              refLink={linkBottom[Object.keys(linkBottom)][0]}
+              itemId={linkBottom.shortLink}
+              shortLink={`http://bit.ref/${linkBottom.shortLink}`}
+              title={linkBottom.titleLink}
+              refLink={linkBottom.sourceLink}
             />
           :
             <div></div>

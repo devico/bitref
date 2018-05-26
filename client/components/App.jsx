@@ -29,11 +29,11 @@ export default class App extends React.Component {
     const link = this.state.linkInput
     addLinkData(link)
       .then(() => getLinks())
-      .then(links => {
+      .then(link => {
         this.setState({
           linkInput: '',
           linkBottom: this.state.linkTop,
-          linkTop: Object.keys(links).map(k => ({[k]: links[k]}))[Object.keys(links).length - 1]
+          linkTop: link
         })
       })
   }

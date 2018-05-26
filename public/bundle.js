@@ -20341,8 +20341,6 @@ var _RefsBox2 = _interopRequireDefault(_RefsBox);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -20383,13 +20381,11 @@ var App = function (_React$Component) {
       var link = this.state.linkInput;
       (0, _helpers.addLinkData)(link).then(function () {
         return (0, _helpers.getLinks)();
-      }).then(function (links) {
+      }).then(function (link) {
         _this2.setState({
           linkInput: '',
           linkBottom: _this2.state.linkTop,
-          linkTop: Object.keys(links).map(function (k) {
-            return _defineProperty({}, k, links[k]);
-          })[Object.keys(links).length - 1]
+          linkTop: link
         });
       });
     }
@@ -22591,18 +22587,18 @@ function RefsBox(props) {
           'div',
           null,
           _react2.default.createElement(_RefsItem2.default, {
-            itemId: Object.keys(linkTop),
-            shortLink: 'http://bit.ref/' + Object.keys(linkTop),
-            title: linkTop[Object.keys(linkTop)][1],
-            refLink: linkTop[Object.keys(linkTop)][0]
+            itemId: linkTop.shortLink,
+            shortLink: 'http://bit.ref/' + linkTop.shortLink,
+            title: linkTop.titleLink,
+            refLink: linkTop.sourceLink
           }),
           _react2.default.createElement(_SignupPromotion2.default, null)
         ) : _react2.default.createElement('div', null),
         Object.keys(linkBottom).length > 0 ? _react2.default.createElement(_RefsItem2.default, {
-          itemId: Object.keys(linkBottom),
-          shortLink: 'http://bit.ref/' + Object.keys(linkBottom),
-          title: linkBottom[Object.keys(linkBottom)][1],
-          refLink: linkBottom[Object.keys(linkBottom)][0]
+          itemId: linkBottom.shortLink,
+          shortLink: 'http://bit.ref/' + linkBottom.shortLink,
+          title: linkBottom.titleLink,
+          refLink: linkBottom.sourceLink
         }) : _react2.default.createElement('div', null)
       )
     )
@@ -22696,7 +22692,7 @@ function RefsItem(props) {
 
 
 RefsItem.propTypes = {
-  itemId: _propTypes2.default.array,
+  itemId: _propTypes2.default.string,
   shortLink: _propTypes2.default.string,
   title: _propTypes2.default.string,
   refLink: _propTypes2.default.string

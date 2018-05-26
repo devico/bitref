@@ -25,7 +25,7 @@ function RefsItem(props) {
 }
 
 RefsItem.propTypes = {
-  itemId: PT.array,
+  itemId: PT.string,
   shortLink: PT.string,
   title: PT.string,
   refLink: PT.string
